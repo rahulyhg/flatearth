@@ -1,0 +1,7 @@
+{
+  "name": "flatearth",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Oleg Lustenko",
+  "license": "MIT"
+}

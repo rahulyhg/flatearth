@@ -7,6 +7,7 @@ const StyledNav = styled.nav`
   height:auto;
   align-items:center;
   margin:0;
+  align-self:center;
 `;
 
 export default StyledNav;

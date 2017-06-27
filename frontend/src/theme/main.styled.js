@@ -5,7 +5,7 @@ const MainBox = styled.div`
   border:transparent 2px solid;
   border-radius:50%;
   grid-template-columns: repeat(4, 10fr);
-  grid-template-rows: repeat(4, 10fr);
+  grid-template-rows: auto 100fr auto;
   grid-gap:.75rem;
   grid-auto-rows: minmax(10fr, 100fr);
 `;

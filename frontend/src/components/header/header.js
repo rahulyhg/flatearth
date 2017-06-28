@@ -1,32 +1,49 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-import HeaderStyled from './header.styled';
-
-import HeaderItem from './nav_styled/nav_item.styled';
-import HeaderList from './nav_styled/header_list.styled';
-
-import LinkStyled from './nav_styled/link.styled';
-import LogoStyled from '../../theme/components/logo.styled';
-import NavStyled from '../../theme/components/navbar.styled';
+import {
+  HeaderStyled,
+  HeaderItem,
+  HeaderList,
+  StyledLink as Link,
+  LogoStyled,
+  NavStyled
+} from './header.styled';
+import * as actions from '../../actions';
 
 class Header extends Component {
+  renderLinks() {
+    if (this.props.authenticated) {
+      return [
+        <HeaderItem key="link-info">
+          <Link to="/">INFO</Link>
+        </HeaderItem>,
+        <HeaderItem key="link-signin">
+          <Link to="/profile">User</Link>
+        </HeaderItem>
+      ];
+    }
+    return [
+      <HeaderItem key="link-info">
+        <Link to="/">INFO</Link>
+      </HeaderItem>,
+      <HeaderItem key="link-signin">
+        <Link to="/signin">sign in</Link>
+      </HeaderItem>
+    ];
+  }
   render() {
     return (
       <HeaderStyled>
         <NavStyled>
           <HeaderList>
-            <HeaderItem>
-              <LinkStyled>INFO</LinkStyled>
-            </HeaderItem>
-            <HeaderItem>
-              <LinkStyled>Person</LinkStyled>
-            </HeaderItem>
+            {this.renderLinks()}
           </HeaderList>
-          <LogoStyled>LOGO</LogoStyled>
+          <LogoStyled to="/">LOGO</LogoStyled>
         </NavStyled>
       </HeaderStyled>
     );
   }
 }
 
-export default Header;
+export default connect()(Header);

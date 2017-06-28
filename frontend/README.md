@@ -1,3 +1,0 @@
-# Flat earth application
-
-[codepen](https://codepen.io/OlegLustenko/pen/pwWqKB)

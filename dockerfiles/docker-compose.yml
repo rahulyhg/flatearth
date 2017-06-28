@@ -1,0 +1,19 @@
+version: "3"
+services:
+  frontend:
+    build:
+      context: ..
+      dockerfile: ./dockerfiles/Dockerfile-frontend
+    volumes:
+      - "../frontend:/srv/app"
+    ports:
+      - "${frontend_port}:3000"   
+  backend:
+    build:
+      context: ..
+      dockerfile: ./dockerfiles/Dockerfile-backend
+    volumes:
+      - "../backend:/srv/app"
+    ports:
+      - "${backend_port}:3001"
+      - "9229:9229" #DEBUG PORT

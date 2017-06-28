@@ -2,11 +2,18 @@
   "name": "flatearth",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://backend:3001",
   "dependencies": {
+    "cross-env": "^5.0.1",
+    "normalize.css": "^7.0.0",
     "react": "next",
     "react-dom": "next",
     "react-redux": "^5.0.5",
+    "react-router": "^4.1.1",
+    "react-router-dom": "^4.1.1",
     "redux": "^3.7.1",
+    "redux-form": "^6.8.0",
+    "redux-thunk": "^2.2.0",
     "styled-components": "^2.1.0"
   },
   "devDependencies": {

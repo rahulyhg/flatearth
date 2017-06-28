@@ -3,5 +3,30 @@
   "version": "1.0.0",
   "main": "index.js",
   "author": "Oleg Lustenko",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "dev": "docker-compose -f ./dockerfiles/docker-compose-dev.yml up",
+    "prod": "docker-compose -f ./dockerfiles/docker-compose.yml up",
+    "build": "yarn prod -- --build",
+    "lint-staged": "lint-staged"
+  },
+  "lint-staged": {
+    "frontend/src/**/*.js": "eslint",
+    "backend/src/**/*.js": "eslint"
+  },
+  "pre-commit": "lint-staged",
+  "keywords": ["flatearth", "javascript", "OSS", "Lustenko", "React", "Node.js", "Docker"],
+  "devDependencies": {
+    "eslint-plugin-import": "^2.2.0",
+    "pre-commit": "^1.2.2"
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "root": true,
+    "plugins": ["flowtype", "react"],
+    "extends": ["airbnb-base", "prettier"],
+    "env": {
+      "node": true
+    }
+  }
 }

@@ -1,10 +1,10 @@
+// @flow
 import styled from 'styled-components';
+import HomeWrapper from '../../theme/components/homeWrapper.styled';
 
-const HomeStyled = styled.main`
-  grid-row: 2 / 4;
-  grid-column: 1 / 4;
-  justify-content: center;
-  display:flex;
+export const HomeStyled = HomeWrapper.withComponent('main');
+
+export const ImageStyled = styled.img`
+  max-width: 100%;
+  height: auto;
 `;
-
-export default HomeStyled;

@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/middlewares/02-logger.js"],"names":[],"mappings":";;;;;;AAAA;;;;;;kBAEe,0B","file":"02-logger.js","sourcesContent":["import logger from 'koa-logger';\n\nexport default logger();\n"]}

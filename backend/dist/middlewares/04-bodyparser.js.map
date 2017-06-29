@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/middlewares/04-bodyparser.js"],"names":[],"mappings":";;;;;;AAAA;;;;;;kBAEe,8B","file":"04-bodyparser.js","sourcesContent":["import bodyParser from 'koa-bodyparser';\n\nexport default bodyParser()"]}

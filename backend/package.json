@@ -63,7 +63,7 @@
     "babel-register": "^6.23.0",
     "eslint": "^3.16.1",
     "eslint-config-airbnb-base": "^11.1.0",
-    "eslint-config-prettier": "^2.1.0",
+    "eslint-config-prettier": "^2.2.0",
     "eslint-plugin-flowtype": "^2.30.3",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-react": "^7.0.1",

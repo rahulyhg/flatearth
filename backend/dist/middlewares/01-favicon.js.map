@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../src/middlewares/01-favicon.js"],"names":[],"mappings":";;;;;;AAAA;;;;;;kBAEe,2B","file":"01-favicon.js","sourcesContent":["import favicon from 'koa-favicon';\n\nexport default favicon();\n"]}

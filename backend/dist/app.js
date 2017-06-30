@@ -8,6 +8,14 @@ var _fs = require('fs');
 
 var _fs2 = _interopRequireDefault(_fs);
 
+var _ws = require('ws');
+
+var _ws2 = _interopRequireDefault(_ws);
+
+var _http = require('http');
+
+var _http2 = _interopRequireDefault(_http);
+
 var _path = require('path');
 
 var _config = require('config');
@@ -39,6 +47,8 @@ middlewares.forEach(middleware => {
 
 app.use((0, _koaMount2.default)('/api/v1', _APIModules2.default));
 
+const server = _http2.default.createServer(app.callback());
+const wss = new _ws2.default.Server({ server });
 app.listen(_config.PORT, err => {
   if (err) throw new Error(err);
   console.log('server running at %s:%s', _config.HOST, _config.PORT);

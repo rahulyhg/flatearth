@@ -32,6 +32,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 const NotificationModule = new _koa2.default();
 
+NotificationModule.use(_koaRoute2.default.get('/last-joined', _last_joined2.default.get));
 NotificationModule.use((0, _koaJwt2.default)({ secret: _config2.default.secret, algorithm: 'HS256' }));
 NotificationModule.use(_koaRoute2.default.post('/new-status', _last_joined2.default.post));
 NotificationModule.use(_koaRoute2.default.post('/last-joined', _new_status2.default.post));

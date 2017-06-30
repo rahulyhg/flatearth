@@ -15,7 +15,12 @@ const labelColor = '#70d09f';
 
 const gap = fontSize * 1.5;
 
-export const SigninForm = WrapperHome.withComponent('form');
+const SigninFormWrapped = WrapperHome.withComponent('form');
+export const SigninForm = SigninFormWrapped.extend`
+  border: 2px solid red;
+  grid-column: 2 / 2;
+  padding: 1rem 0;
+`;
 
 export const Label = styled.label`
   position: absolute;
@@ -81,11 +86,11 @@ export const FieldsetStyled = styled.fieldset`
   position: relative;
   padding-top: 1.1rem;
   padding-bottom: 1.1rem;
-  margin-top: ${gap * 1.5}rem;
-  margin-bottom: ${gap * 1.5}rem;
+  margin-top: ${gap * 0.1}rem;
+  margin-bottom: ${gap * 0.5}rem;
 `;
 
 export const ControlsStyled = styled.div`
   display: flex;
-  flex-direction: row;  
+  flex-direction: row;
 `;

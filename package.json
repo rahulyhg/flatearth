@@ -15,7 +15,15 @@
     "backend/src/**/*.js": "eslint"
   },
   "pre-commit": "lint-staged",
-  "keywords": ["flatearth", "javascript", "OSS", "Lustenko", "React", "Node.js", "Docker"],
+  "keywords": [
+    "flatearth",
+    "javascript",
+    "OSS",
+    "Lustenko",
+    "React",
+    "Node.js",
+    "Docker"
+  ],
   "devDependencies": {
     "eslint-plugin-import": "^2.2.0",
     "pre-commit": "^1.2.2"
@@ -23,10 +31,21 @@
   "eslintConfig": {
     "parser": "babel-eslint",
     "root": true,
-    "plugins": ["flowtype", "react"],
-    "extends": ["airbnb-base", "prettier"],
+    "plugins": [
+      "flowtype",
+      "react"
+    ],
+    "extends": [
+      "airbnb-base",
+      "prettier"
+    ],
     "env": {
       "node": true
     }
+  },
+  "dependencies": {
+    "eslint-config-airbnb-base": "^11.2.0",
+    "eslint-config-prettier": "^2.2.0",
+    "lint-staged": "^4.0.0"
   }
 }

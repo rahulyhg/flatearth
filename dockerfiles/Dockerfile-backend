@@ -7,6 +7,6 @@ COPY ./backend/yarn.lock /srv/app
 
 RUN yarn install
 
-COPY ./backend/srv/app
+COPY ./backend /srv/app
 
 CMD yarn start

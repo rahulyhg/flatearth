@@ -1,1 +1,1 @@
-{"version":3,"sources":[],"names":[],"mappings":"","file":"new_status.controller.js","sourcesContent":[]}
+{"version":3,"sources":["../../../../src/modules/notification/controller/new_status.controller.js"],"names":["post","get","ctx","body"],"mappings":";;;;;kBAAe;AACbA,SAAO,CAAE,CADI;AAEbC,MAAIC,GAAJ,EAAS;AACPA,QAAIC,IAAJ,GAAW,IAAX;AACD;AAJY,C","file":"new_status.controller.js","sourcesContent":["export default {\n  post() {},\n  get(ctx) {\n    ctx.body = 'ok';\n  }\n};\n"]}

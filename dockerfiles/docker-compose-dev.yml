@@ -7,7 +7,7 @@ services:
     volumes:
       - "../frontend:/srv/app"
     ports:
-      - "${frontend_port}:3000" 
+      - "${frontend_port}:3000"    
   backend:
     build:
       context: ..

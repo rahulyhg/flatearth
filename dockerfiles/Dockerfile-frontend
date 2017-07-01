@@ -4,6 +4,7 @@ WORKDIR /srv/app
 
 COPY ./frontend/package.json /srv/app
 COPY ./frontend/yarn.lock /srv/app
+
 RUN yarn install
 
 COPY ./frontend /srv/app

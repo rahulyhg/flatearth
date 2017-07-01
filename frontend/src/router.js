@@ -6,14 +6,15 @@ import Home from './containers/home/home';
 import Signin from './containers/auth/signin/signin';
 import Signup from './containers/auth/signup/signup';
 import Profile from './containers/profile/profile';
+import { Homewrapper } from './theme/components.styled';
 
 // const SecretUploads = RequireAuth(Uploads);
 const NoMatch = ({ location }) =>
-  <div>
+  <Homewrapper>
     <h3>
       No match for <code>{location.pathname}</code>
     </h3>
-  </div>;
+  </Homewrapper>;
 
 const Main = () =>
   <Switch>

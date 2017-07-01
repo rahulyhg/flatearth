@@ -9,7 +9,6 @@ import {
   LogoStyled,
   NavStyled
 } from './header.styled';
-import * as actions from '../../actions';
 
 class Header extends Component {
   renderLinks() {
@@ -49,7 +48,7 @@ class Header extends Component {
 const mapStateToProps = (state, ownProps) => {
   return {
     authenticated: state.user.authenticated
-  }
-}
+  };
+};
 
 export default connect(mapStateToProps)(Header);

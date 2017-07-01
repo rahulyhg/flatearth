@@ -1,8 +1,8 @@
 // @flow
 import styled from 'styled-components';
-import HomeWrapper from '../../theme/components/homeWrapper.styled';
+import { Homewrapper } from '../../theme/components.styled';
 
-export const HomeStyled = HomeWrapper.withComponent('main');
+export const HomeStyled = Homewrapper.withComponent('main');
 
 export const ImageStyled = styled.img`
   max-width: 100%;

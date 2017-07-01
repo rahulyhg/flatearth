@@ -16,4 +16,4 @@ services:
       - "../backend:/srv/app"
     ports:
       - "${backend_port}:3001"
-      - "9229:9229" #DEBUG PORT
+      # - "9229:9229" #DEBUG PORT

@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { ButtonLogout } from './profile.styled';
-import WrapperHome from '../../theme/components/homeWrapper.styled';
+import { Homewrapper } from '../../theme/components.styled';
 import * as actions from '../../actions';
 
 class Profile extends Component {
@@ -15,9 +15,11 @@ class Profile extends Component {
   }
   render() {
     return (
-      <WrapperHome>
-        <ButtonLogout onClick={this.logoutClick.bind(this)}>logout</ButtonLogout>
-      </WrapperHome>
+      <Homewrapper>
+        <ButtonLogout onClick={this.logoutClick.bind(this)}>
+          logout
+        </ButtonLogout>
+      </Homewrapper>
     );
   }
 }

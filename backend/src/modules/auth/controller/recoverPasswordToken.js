@@ -15,7 +15,7 @@ ROUTE /api/v1/auth/recover-password
 export default {
   async post(ctx, recoveryToken: string) {
     bodyValidation(ctx, 'password');
-    
+
     const { password } = ctx.request.body;
     let user = DBQueryCache.getCachedDBQuery(recoveryToken);
     if (!user) {

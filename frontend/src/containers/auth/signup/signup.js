@@ -7,7 +7,11 @@ import * as actions from '../../../actions';
 
 const FieldInput = (type, fieldName) => ({ input, meta }) => [
   <input type={type} {...input} placeholder={fieldName} className="form-control" key={fieldName} />,
-  meta.touched && meta.error && <div className="error" key={fieldName + 'Alert'}>{meta.error}</div>
+  meta.touched &&
+    meta.error &&
+    <div className="error" key={fieldName + 'Alert'}>
+      {meta.error}
+    </div>
 ];
 
 class Signup extends Component {
@@ -27,7 +31,8 @@ class Signup extends Component {
     if (this.props.errorMessage) {
       return (
         <div className="alert alert-danger">
-          <strong>Oops! </strong>{this.props.errorMessage}
+          <strong>Oops! </strong>
+          {this.props.errorMessage}
         </div>
       );
     }
@@ -55,7 +60,9 @@ class Signup extends Component {
           <Field name="passwordConfirm" component={FieldInput('password', 'passwordConfirm')} />
         </fieldset>
         {this.renderAlert()}
-        <button type="submit" className="btn btn-primary">Sign up!</button>
+        <button type="submit" className="btn btn-primary">
+          Sign up!
+        </button>
       </form>
     );
   }
@@ -81,11 +88,9 @@ const validate = ({ password, email, passwordConfirm, user }) => {
   return errors;
 };
 
-const mapStateToProps = state => {
-  return {
-    errorMessage: state.auth.error
-  };
-};
+const mapStateToProps = state => ({
+  errorMessage: state.user.error
+});
 
 export default connect(mapStateToProps, actions)(
   reduxForm({

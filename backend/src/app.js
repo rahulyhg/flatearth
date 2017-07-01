@@ -1,6 +1,8 @@
 // @flow
 import Koa from 'koa';
 import fs from 'fs';
+import http from 'http';
+import url from 'url';
 import { join } from 'path';
 import { HOST, PORT } from 'config';
 import mount from 'koa-mount';
@@ -21,9 +23,10 @@ middlewares.forEach(middleware => {
 
 app.use(mount('/api/v1', APIModules));
 
-webSocket(app);
+const server = http.createServer(app.callback());
 
-app.listen(PORT, err => {
+webSocket(server);
+server.listen(PORT, err => {
   if (err) throw new Error(err);
   console.log('server running at %s:%s', HOST, PORT);
 });

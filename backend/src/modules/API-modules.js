@@ -7,6 +7,6 @@ import NotificationModule from './notification/notification.module';
 const APIModules = new Koa();
 
 APIModules.use(mount('/auth', AuthModule));
-APIModules.use(mount('/notification', NotificationModule));
+// APIModules.use(mount('/notification', NotificationModule));
 
 export default APIModules;

@@ -1,10 +1,8 @@
+// @flow
 import mongoose from 'mongoose';
-import bluebird from 'bluebird';
 import config from 'config';
 import createEmptyDb from './db/createEmtpyDb';
 import fixtures from '../fixtures';
-import User from '../models/User';
-import Roles from '../models/Roles';
 
 const { users, roles } = fixtures;
 
@@ -31,7 +29,7 @@ export default () =>
       .once('open', async () => {
         // await Promise.all[
         //   (createEmptyDb(), createFixtures(Roles, roles), createFixtures(User, users))
-        // ]; 
+        // ];
         resolve(mongoose.connection.db);
         if (config.mongoose.uri.includes('mlab')) {
           console.log('\x1b[36m%s\x1b[0m', 'Connected to MongoLab');

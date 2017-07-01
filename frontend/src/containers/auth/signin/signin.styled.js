@@ -1,5 +1,6 @@
 // @flow
 import styled from 'styled-components';
+import { Field } from 'redux-form';
 import WrapperHome from '../../../theme/components/homeWrapper.styled';
 
 const fontSize = 1;
@@ -52,7 +53,7 @@ export const Icon = styled.i`
   }
 `;
 
-export const Textarea = styled.input`
+export const Textarea = styled(Field)`
   display: block;
   background: none;
   padding: ${mfSpacer}rem ${mfSpacer}rem ${mfSpacer / 2}rem;

@@ -29,20 +29,28 @@ type SuccessSignUpType = {
 
 const SERVERNOTRESPOND = 'Unexpected token P in JSON at position 0';
 
+export function authError(error: string): AuthErrorActionType {
+  return {
+    type: AUTH_ERROR,
+    payload: error
+  };
+}
+
 export function signinUser(
   { user, password }: { user: string, password: string },
   redirect: Function
 ): Function {
   return async (dispatch: Dispatch<*>): Promise<*> => {
-    // Submit user/password to server
+    // Submit user/password to server\
     const signInStatus = await api.signin({ user, password });
     if (signInStatus.status === 'success') {
       // if request is good...
-      const { user, token }: SuccessSigninType = signInStatus.message;
+      const { user: userInfo, token: accessToken }: SuccessSigninType = signInStatus.message;
       // -- Update State to indicate is authenticated
-      dispatch({ type: AUTH_USER, user });
+      dispatch({ type: AUTH_USER, userInfo, accessToken });
       // -- Save the JWT token
-      localStorage.setItem('token', token);
+      localStorage.setItem('token', accessToken);
+      localStorage.setItem('user', JSON.stringify(user));
       // -- redirect to the  router '/feature'
       redirect();
     } else {
@@ -57,16 +65,9 @@ export function signinUser(
   };
 }
 
-export function authError(error: string): AuthErrorActionType {
-  return {
-    type: AUTH_ERROR,
-    payload: error
-  };
-}
-
 export function signoutUser() {
   localStorage.removeItem('token');
-  localStorage.removeItem('userID');
+  localStorage.removeItem('user');
   return {
     type: UNAUTH_USER
   };
@@ -76,17 +77,11 @@ export function signupUser({ user, password, email }, callback: Function) {
   return async (dispatch: Dispatch<*>) => {
     const signupStatus = await api.signup({ user, password, email });
     if (signupStatus.status === 'success') {
-      const { id, name }: SuccessSignUpType = signupStatus.message;
+      // const { id, name }: SuccessSignUpType = signupStatus.message;
       dispatch(signoutUser());
       callback();
     } else {
       dispatch(authError(signupStatus.message));
     }
-  };
-}
-
-export function userUploads(): Function {
-  return async (dispatch: Dispatch<*>): Promise<*> => {
-    return await api.uploads();
   };
 }

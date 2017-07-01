@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { reduxForm, Field } from 'redux-form';
+import { reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 
 import { SigninForm, Label, Icon, Textarea, FieldsetStyled, ControlsStyled } from './signin.styled';
@@ -10,6 +10,11 @@ class Signin extends Component {
   constructor() {
     super();
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
+    this.signupClick = this.signupClick.bind(this);
+  }
+
+  signupClick() {
+    this.props.history.push('/signup');
   }
 
   handleFormSubmit({ user, password }) {
@@ -32,19 +37,21 @@ class Signin extends Component {
     return (
       <SigninForm onSubmit={handleSubmit(this.handleFormSubmit)}>
         <FieldsetStyled>
-          <Field id="user" name="user" component={Textarea} type="text" />
+          <Textarea name="user" component="input" type="text" />
           <Label htmlFor="user">Name:</Label>
           <Icon />
         </FieldsetStyled>
         <FieldsetStyled>
-          <Field id="password" name="password" component={Textarea} type="password" />
+          <Textarea name="password" component="input" type="password" />
           <Label htmlFor="password">Password:</Label>
           <Icon />
         </FieldsetStyled>
         {this.alertMessage()}
         <ControlsStyled>
-          <ButtonTheme action="submit" padding>Sign in</ButtonTheme>
-          <ButtonTheme>Sign up</ButtonTheme>
+          <ButtonTheme action="submit" padding>
+            Sign in
+          </ButtonTheme>
+          <ButtonTheme onClick={this.signupClick}>Sign up</ButtonTheme>
         </ControlsStyled>
       </SigninForm>
     );
@@ -53,7 +60,7 @@ class Signin extends Component {
 
 const mapStateToProps = state => {
   return {
-    errorMessage: state.auth.error
+    errorMessage: state.user.error
   };
 };
 

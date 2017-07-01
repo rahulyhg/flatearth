@@ -2,9 +2,11 @@
   "name": "flatearth",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://backend:3001",
+  "proxy": "http://localhost:3001",
   "dependencies": {
     "cross-env": "^5.0.1",
+    "eslint-config-prettier": "^2.3.0",
+    "eslint-plugin-react": "^7.1.0",
     "normalize.css": "^7.0.0",
     "react": "next",
     "react-dom": "next",
@@ -24,6 +26,22 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
+    "lint:js": "eslint src/",
     "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "parser": "babel-eslint",
+    "root": true,
+    "plugins": [
+      "flowtype",
+      "react"
+    ],
+    "extends": [
+      "airbnb-base",
+      "prettier"
+    ],
+    "env": {
+      "browser": true
+    }
   }
 }

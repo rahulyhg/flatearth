@@ -2,9 +2,10 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import Home from './components/home/home';
-import Singin from './containers/auth/signin/signin';
-import Singup from './containers/auth/signup/signup';
+import Home from './containers/home/home';
+import Signin from './containers/auth/signin/signin';
+import Signup from './containers/auth/signup/signup';
+import Profile from './containers/profile/profile';
 
 // const SecretUploads = RequireAuth(Uploads);
 const NoMatch = ({ location }) =>
@@ -17,8 +18,9 @@ const NoMatch = ({ location }) =>
 const Main = () =>
   <Switch>
     <Route exact path="/" component={Home} />
-    <Route path="/signin" component={Singin} />
-    <Route path="/signup" component={Singup} />
+    <Route path="/signin" component={Signin} />
+    <Route path="/signup" component={Signup} />
+    <Route path="/profile" component={Profile} />
     <Route component={NoMatch} />
   </Switch>;
 

@@ -8,10 +8,6 @@ var _mongoose = require('mongoose');
 
 var _mongoose2 = _interopRequireDefault(_mongoose);
 
-var _bluebird = require('bluebird');
-
-var _bluebird2 = _interopRequireDefault(_bluebird);
-
 var _config = require('config');
 
 var _config2 = _interopRequireDefault(_config);
@@ -23,14 +19,6 @@ var _createEmtpyDb2 = _interopRequireDefault(_createEmtpyDb);
 var _fixtures = require('../fixtures');
 
 var _fixtures2 = _interopRequireDefault(_fixtures);
-
-var _User = require('../models/User');
-
-var _User2 = _interopRequireDefault(_User);
-
-var _Roles = require('../models/Roles');
-
-var _Roles2 = _interopRequireDefault(_Roles);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -55,7 +43,7 @@ exports.default = () => new Promise((resolve, reject) => {
   _mongoose2.default.connection.on('error', error => reject(error)).on('close', () => console.log('Database connection closed.')).once('open', async () => {
     // await Promise.all[
     //   (createEmptyDb(), createFixtures(Roles, roles), createFixtures(User, users))
-    // ]; 
+    // ];
     resolve(_mongoose2.default.connection.db);
     if (_config2.default.mongoose.uri.includes('mlab')) {
       console.log('\x1b[36m%s\x1b[0m', 'Connected to MongoLab');

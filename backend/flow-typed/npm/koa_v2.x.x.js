@@ -1,3 +1,6 @@
+// flow-typed signature: 846c003f881e5aba2c7c39e3edf8ce31
+// flow-typed version: 47f1640404/koa_v2.x.x/flow_>=v0.47.x
+
 /*
  * Type def from from source code of koa.
  * this: https://github.com/koajs/koa/commit/08eb1a20c3975230aa1fe1c693b0cd1ac7a0752b

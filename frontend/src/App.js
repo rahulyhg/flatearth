@@ -4,8 +4,8 @@ import React, { Component } from 'react';
 import MainStyled from './theme/main.styled';
 import Main from './router';
 
-import Header from './components/header/header';
-import Sidebar from './components/sidebar/sidebar';
+import Header from './containers/header/header';
+import Sidebar from './containers/sidebar/sidebar';
 import Peoplelist from './containers/people_list/people_list';
 import Peoplestatus from './containers/people_status/people_status';
 

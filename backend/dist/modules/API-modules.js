@@ -25,7 +25,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 const APIModules = new _koa2.default();
 
 APIModules.use((0, _koaMount2.default)('/auth', _authModule2.default));
-APIModules.use((0, _koaMount2.default)('/notification', _notification2.default));
+// APIModules.use(mount('/notification', NotificationModule));
 
 exports.default = APIModules;
 //# sourceMappingURL=API-modules.js.map

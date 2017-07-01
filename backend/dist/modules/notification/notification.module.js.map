@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../src/modules/notification/notification.module.js"],"names":["NotificationModule"],"mappings":";;;;;;AACA;;;;;;AAEA,MAAMA,qBAAqB,mBAA3B;kBAEeA,kB","file":"notification.module.js","sourcesContent":["// @flow\nimport Koa from 'koa';\n\nconst NotificationModule = new Koa();\n\nexport default NotificationModule;\n"]}

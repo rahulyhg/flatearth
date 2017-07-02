@@ -30,13 +30,13 @@ export const StyledLink = styled(Link)`
 
 export const HeaderItem = styled.li`
   display: flex;
-  align-self: flex-start;
+  // align-self: flex-start;
   border-right: 2px solid #fff;
   border-left: 2px solid #fff;
   &:hover {
     background: #03a9f4;
   }
-  &:first-child {
+  &:not(:last-child) {
     border-right: none;
   }
 `;
@@ -47,11 +47,12 @@ export const LogoStyled = styled(Link)`
   flex-grow: 3;
   flex: 1;
   padding: 1rem;
+  font-size:1.125rem;
   justify-content: center;
   border: 2px solid #fff;
   background: black;
-  text-decoration:none;
-  color:#fff;
+  text-decoration: none;
+  color: #fff;
   padding: 1rem 2rem 1rem 2rem;
   & :visited {
     color:#3F51B5;

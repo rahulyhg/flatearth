@@ -38,16 +38,16 @@ class Header extends Component {
           <HeaderList>
             {this.renderLinks()}
           </HeaderList>
-          <LogoStyled to="/">LOGO</LogoStyled>
+          <LogoStyled to="/flatearth">FLAT EARTH</LogoStyled>
         </NavStyled>
       </HeaderStyled>
     );
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = ({ auth }, ownProps) => {
   return {
-    authenticated: state.user.authenticated
+    authenticated: auth.authenticated
   };
 };
 

@@ -47,7 +47,7 @@ export function signinUser(
       // if request is good...
       const { user: userInfo, token: accessToken }: SuccessSigninType = signInStatus.message;
       // -- Update State to indicate is authenticated
-      dispatch({ type: AUTH_USER, userInfo, accessToken });
+      dispatch({ type: AUTH_USER, payload: { userInfo, accessToken } });
       // -- Save the JWT token
       localStorage.setItem('token', accessToken);
       localStorage.setItem('user', JSON.stringify(user));

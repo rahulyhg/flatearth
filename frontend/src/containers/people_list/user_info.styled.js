@@ -11,6 +11,8 @@ export const UserlinkStyled = styled.a`
   }
 `;
 
+/* Shorten length of country and name */
+
 export const UsercontentStyled = styled.span`
   font-size: 1.2rem;
   color: #000;

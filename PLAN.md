@@ -55,7 +55,7 @@ TODO: Back-end endpoints
     * ui
       * activeRequests: number
     * user  
-      * name: string
+      * userInfo: Object
       * accessToken: string
       * coordinates: string
   * vendor

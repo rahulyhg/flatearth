@@ -8,7 +8,7 @@ export const PeoplelistStyled = styled.ul`
   margin: 10px;
 `;
 
-export const UserlistStyled = styled.ul`
+export const UserlistStyled = styled.section`
   display: flex;
   flex-direction: column;
   padding: 1rem;

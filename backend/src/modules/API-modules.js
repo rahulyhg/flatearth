@@ -2,7 +2,7 @@ import Koa from 'koa';
 import mount from 'koa-mount';
 
 import AuthModule from './auth/auth-module';
-import NotificationModule from './notification/notification.module';
+// import NotificationModule from './notification/notification.module';
 
 const APIModules = new Koa();
 

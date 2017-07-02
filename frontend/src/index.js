@@ -7,18 +7,20 @@ import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import reduxThunk from 'redux-thunk';
 
-
 import rootReducer from './reducers';
 import logMiddleware from './middlewares/01-logger';
+import wsMiddleware from './middlewares/02-websocket';
 import { AUTH_USER } from './actions/types';
 
 import App from './App';
-import registerServiceWorker from './registerServiceWorker';
+import registerServiceWorker from './services/registerServiceWorker';
 import './theme/index.css';
 import 'normalize.css';
 
 const mountNode = document.getElementById('root');
-const createStoreWithMiddleware = applyMiddleware(logMiddleware, reduxThunk)(createStore);
+const createStoreWithMiddleware = applyMiddleware(logMiddleware, wsMiddleware, reduxThunk)(
+  createStore
+);
 const store = createStoreWithMiddleware(rootReducer);
 
 const token = localStorage.getItem('token');
@@ -26,7 +28,7 @@ const user = localStorage.getItem('user');
 // If we have a token, consider the user to be signed in
 if (token) {
   // we need update application state
-  store.dispatch({ type: AUTH_USER, accessToken: token, user });
+  store.dispatch({ type: AUTH_USER, payload: { accessToken: token, user } });
 }
 const render = Component => {
   ReactDOM.render(

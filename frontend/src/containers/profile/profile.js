@@ -16,18 +16,16 @@ class Profile extends Component {
   render() {
     return (
       <Homewrapper>
-        <ButtonLogout onClick={this.logoutClick.bind(this)}>
-          logout
-        </ButtonLogout>
+        <ButtonLogout onClick={this.logoutClick.bind(this)}>logout</ButtonLogout>
       </Homewrapper>
     );
   }
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = ({ locals: { auth } }, ownProps) => {
   return {
-    authenticated: state.user.authenticated,
-    userInfo: state.user.userInfo
+    authenticated: auth.authenticated,
+    userInfo: auth.userInfo
   };
 };
 

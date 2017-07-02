@@ -1,14 +1,14 @@
 import { AUTH_USER, UNAUTH_USER, AUTH_ERROR } from '../actions/types';
 
 export default (state = {}, action) => {
-  switch (action.type) {
+    switch (action.type) {
     case AUTH_USER:
       return {
         ...state,
         error: '',
         authenticated: true,
-        accessToken: action.accessToken,
-        userInfo: action.userInfo
+        accessToken: action.payload.accessToken,
+        userInfo: action.payload.userInfo
       };
     case UNAUTH_USER:
       return { ...state, error: '', authenticated: false, accessToken: false };

@@ -31,7 +31,8 @@ const UserSchema = new mongoose.Schema({
     default: oid('admin-role')
   },
   lastVisited: { type: Number, default: Date.now() },
-  isActivated: { type: Boolean, default: false }
+  isActivated: { type: Boolean, default: false },
+
 });
 
 UserSchema.virtual('password')

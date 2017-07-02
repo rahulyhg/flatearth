@@ -1,15 +1,35 @@
+// @flow
 import React, { Component } from 'react';
-import {FlatEarthMain} from './flatearth.styled';
+import { FlatEarthMain, ButtonNavigator } from './flatearth.styled';
+import { connect } from 'react-redux';
+// TODO import CompassSVG from '../../assets/compass.svg';
 
 class Flatearth extends Component {
+  constructor() {
+    super();
+    this.findUserPosition = this.findUserPosition.bind(this);
+  }
+  findUserPosition() {
+    navigator.geolocation.getCurrentPosition(position => {
+      console.log(position);
+    });
+  }
   render() {
     return (
-      <div>
-        WIP
-        (Work-in-Progress)
-      </div>
+      <FlatEarthMain>
+        WIP (Work-in-Progress)
+        <ButtonNavigator orange onClick={this.findUserPosition}>
+          Find my position
+        </ButtonNavigator>
+      </FlatEarthMain>
     );
   }
 }
 
-export default Flatearth;
+// const mapStateToProps = (state, ownProps) => {
+//   return {
+//     : state.prop
+//   }
+// }
+
+export default connect()(Flatearth);

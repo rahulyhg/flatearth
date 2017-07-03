@@ -25,7 +25,7 @@ const wsMiddleware: Middleware<*, *> = ({ dispatch }) => next => {
   websocket.onerror = error => console.error('WS ERROR', error.data);
   websocket.onmessage = (event: MessageEvent) => {
     const action = JSON.parse(event.data);
-    console.log(action);
+    // console.log(action);
     Object.assign(action, { meta: { fromWebsocket: true } });
     if (process.env.__DEV__ && action.type === 'TEST') {
     }

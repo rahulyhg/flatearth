@@ -1,8 +1,9 @@
 import { AUTH_USER, UNAUTH_USER, AUTH_ERROR } from '../actions/types';
 
 export default (state = {}, action) => {
-    switch (action.type) {
+  switch (action.type) {
     case AUTH_USER:
+      console.log(action, state);
       return {
         ...state,
         error: '',

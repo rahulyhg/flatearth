@@ -14,7 +14,6 @@ const randomMan = {
 };
 class Peoplestatus extends Component {
   render() {
-    console.log(this.props);
     return (
       <UserlistStyled>
         <PeoplestatusStyled>
@@ -23,16 +22,18 @@ class Peoplestatus extends Component {
           </div>
           <UserInfo userInfo={randomMan} />
           {this.props.children}
-          {this.props.messages && this.props.messages.map(x => {
-            return <h1>'ok'</h1>;
-          })}
+          {this.props.messages &&
+            this.props.messages.map(x => {
+              return <h1>{x.name}</h1>;
+            })}
         </PeoplestatusStyled>
       </UserlistStyled>
     );
   }
 }
 
-const mapStateToProps = ({ db: usersStatus }, ownProps) => {
+const mapStateToProps = ({ usersStatus }, ownProps) => {
+  
   return {
     messages: usersStatus.messages
   };

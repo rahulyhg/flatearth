@@ -45,7 +45,7 @@ class Header extends Component {
   }
 }
 
-const mapStateToProps = ({ auth }, ownProps) => {
+const mapStateToProps = ({ locals: { auth } }, ownProps) => {
   return {
     authenticated: auth.authenticated
   };

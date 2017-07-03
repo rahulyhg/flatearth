@@ -78,7 +78,7 @@ export function signupUser({ user, password, email }, callback: Function) {
     const signupStatus = await api.signup({ user, password, email });
     if (signupStatus.status === 'success') {
       // const { id, name }: SuccessSignUpType = signupStatus.message;
-      dispatch(signoutUser());
+      // dispatch(signoutUser());
       callback();
     } else {
       dispatch(authError(signupStatus.message));

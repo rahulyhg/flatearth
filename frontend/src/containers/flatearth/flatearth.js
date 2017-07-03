@@ -9,6 +9,7 @@ class Flatearth extends Component {
     super();
     this.findUserPosition = this.findUserPosition.bind(this);
   }
+  
   findUserPosition() {
     navigator.geolocation.getCurrentPosition(position => {
       console.log(position);

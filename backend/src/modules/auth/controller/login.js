@@ -50,7 +50,7 @@ export default {
     const { user: name, password }: LoginType = ctx.request.body;
     let user: ?any;
     try {
-      user = await User.findOne({ name });
+      user = await User.findOne({ name }).exec();
       if (!user) {
         throw new Error();
       }
@@ -62,10 +62,12 @@ export default {
     if (!user.validPassword(password)) {
       ctx.throw(401, 'password is incorrect');
     }
-    const jsonUser = user.toJSON();
+    // const jsonUser = user.toJSON();
+    // ctx.statusCode = 201;
+    // ctx.body = 
     ctx.api(201, {
-      token: jwt.sign(jsonUser, config.secret, { expiresIn: '1d' }),
-      user: jsonUser
+      token: jwt.sign(user, config.secret, { expiresIn: '1d' }),
+      user: user
     });
     // ctx.body = { status: 'success', token: jwt.sign(user, config.secret, { expiresIn: '1d' }) };
   },

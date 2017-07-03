@@ -1,5 +1,7 @@
 // @flow
-const BASE_URL_PROD = process.env.BASE_URL_PROD;
+
+const BASE_URL = process.env.BASE_URL;
+
 type UserAuthType = {
   _id: string,
   email: string,
@@ -53,6 +55,7 @@ class Api {
   }
 
   signup({ user, email, password }: { user: string, email: string, password: string }): Promise<*> {
+    console.log(user, email, password);
     return this.fetch(`${this.url}/auth/signup`, {
       email,
       user,
@@ -83,7 +86,7 @@ class Api {
   }
 
   static createApi() {
-    const url = `${BASE_URL_PROD}/api/v1`;
+    const url = `/api/v1`;
     return new Api(url);
   }
 }

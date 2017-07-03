@@ -5,8 +5,18 @@ import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 import * as actions from '../../../actions';
 
+import { FormSignUp } from './signup.styled';
+import {
+  Label,
+  Icon,
+  Textarea,
+  FieldsetStyled,
+  Input
+} from '../../../theme/components/ReduxFormFieldset.styled';
+import { ButtonTheme } from '../../../theme/components.styled';
+
 const FieldInput = (type, fieldName) => ({ input, meta }) => [
-  <input type={type} {...input} placeholder={fieldName} className="form-control" key={fieldName} />,
+  <Input name={type} {...input} type={type} placeholder={fieldName} key={fieldName} />,
   meta.touched &&
     meta.error &&
     <div className="error" key={fieldName + 'Alert'}>
@@ -42,28 +52,27 @@ class Signup extends Component {
   render() {
     const { handleSubmit } = this.props;
     return (
-      <form onSubmit={handleSubmit(this.handleFormSubmit)}>
-        <fieldset>
-          <label htmlFor="user">User Name:</label>
-          <Field name="user" component={FieldInput('text', 'user')} />
-        </fieldset>
-        <fieldset>
-          <label htmlFor="email">Email:</label>
-          <Field name="email" component={FieldInput('email', 'email')} />
-        </fieldset>
-        <fieldset>
-          <label htmlFor="password">Password:</label>
-          <Field name="password" component={FieldInput('password', 'password')} />
-        </fieldset>
-        <fieldset>
-          <label htmlFor="passwordConfirm">Confirm Password:</label>
-          <Field name="passwordConfirm" component={FieldInput('password', 'passwordConfirm')} />
-        </fieldset>
+      <FormSignUp onSubmit={handleSubmit(this.handleFormSubmit)}>
+        <FieldsetStyled>
+          <Label htmlFor="user">Name: </Label>
+          <Field name="user" component={FieldInput('user', 'user')} />
+        </FieldsetStyled>
+
+        <FieldsetStyled>
+          <Label htmlFor="email">Email:</Label>
+          <Textarea name="email" component={FieldInput('email', 'email')} />
+        </FieldsetStyled>
+        <FieldsetStyled>
+          <Label htmlFor="password">Password:</Label>
+          <Textarea name="password" component={FieldInput('password', 'password')} />
+        </FieldsetStyled>
+        <FieldsetStyled>
+          <Label htmlFor="passwordConfirm">Confirm Password:</Label>
+          <Textarea name="passwordConfirm" component={FieldInput('password', 'passwordConfirm')} />
+        </FieldsetStyled>
         {this.renderAlert()}
-        <button type="submit" className="btn btn-primary">
-          Sign up!
-        </button>
-      </form>
+        <ButtonTheme>Sign up!</ButtonTheme>
+      </FormSignUp>
     );
   }
 }
@@ -88,14 +97,14 @@ const validate = ({ password, email, passwordConfirm, user }) => {
   return errors;
 };
 
-const mapStateToProps = state => ({
-  errorMessage: state.user.error
+const mapStateToProps = ({ locals: { auth } }) => ({
+  errorMessage: auth.error
 });
 
 export default connect(mapStateToProps, actions)(
   reduxForm({
     form: 'signup',
-    // fields: ['user', 'email', 'password', 'passwordConfirm'],
+    fields: ['user', 'email', 'password', 'passwordConfirm'],
     validate
   })(Signup)
 );

@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Homewrapper, ButtonTheme } from '../../theme/components.styled';
 
 export const FlatEarthMain = styled(Homewrapper)`
-  font-size: 3rem;
+  font-size: 2rem;
 `;
 
 export const ButtonNavigator = ButtonTheme.extend`

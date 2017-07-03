@@ -2,7 +2,13 @@ import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 
-import { SigninForm, Label, Icon, Textarea, FieldsetStyled, ControlsStyled } from './signin.styled';
+import { SigninForm, ControlsStyled } from './signin.styled';
+import {
+  Label,
+  Icon,
+  Textarea,
+  FieldsetStyled
+} from '../../../theme/components/ReduxFormFieldset.styled';
 import { ButtonTheme } from '../../../theme/components.styled';
 import * as actions from '../../../actions';
 

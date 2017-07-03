@@ -3,6 +3,7 @@ import bodyValidation from '../service/bodyValidation';
 
 export default {
   async post(ctx) {
+    console.log(ctx.request.body);
     bodyValidation(ctx, 'user', 'email', 'password');
     const { user: name, email, password } = ctx.request.body;
     let user;

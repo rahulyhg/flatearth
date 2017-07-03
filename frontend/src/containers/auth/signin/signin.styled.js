@@ -1,7 +1,10 @@
 // @flow
 import styled from 'styled-components';
 import { Field } from 'redux-form';
-import { Homewrapper } from '../../../theme/components.styled';
+
+import { FormTheme } from '../../../theme/components.styled';
+
+export const FormSignUp = FormTheme;
 
 const fontSize = 1;
 const transitionSpeed = '0.28s';
@@ -16,12 +19,7 @@ const labelColor = '#70d09f';
 
 const gap = fontSize * 1.5;
 
-const SigninFormWrapped = Homewrapper.withComponent('form');
-export const SigninForm = SigninFormWrapped.extend`
-  border: 2px solid red;
-  grid-column: 2 / 2;
-  padding: 1rem 0;
-`;
+export const SigninForm = FormTheme;
 
 export const Label = styled.label`
   position: absolute;
@@ -49,8 +47,7 @@ export const Icon = styled.i`
     position: absolute;
     background: ${focusColor};
     z-index: 2;
-    transition: left ${transitionSpeed} ease,
-      width ${transitionSpeed} ease;
+    transition: left ${transitionSpeed} ease, width ${transitionSpeed} ease;
   }
 `;
 

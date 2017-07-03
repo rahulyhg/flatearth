@@ -7,7 +7,6 @@ import usersStatus from './database/userStatuses_reducer';
 import newUsers from './database/newUsers_reducer';
 
 const rootReducer = combineReducers({
-  usersStatus,
   db: combineReducers({
     usersStatus,
     newUsers
@@ -16,6 +15,7 @@ const rootReducer = combineReducers({
     auth: AuthReducer,
     user: UserReducer
   }),
+  form,
   vendor: combineReducers({
     forms: combineReducers({
       signupForm: form

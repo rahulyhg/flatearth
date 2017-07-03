@@ -1,4 +1,5 @@
 // @flow
+const BASE_URL_PROD = process.env.BASE_URL_PROD;
 type UserAuthType = {
   _id: string,
   email: string,
@@ -82,7 +83,7 @@ class Api {
   }
 
   static createApi() {
-    const url = 'http://localhost:3000/api/v1';
+    const url = `${BASE_URL_PROD}/api/v1`;
     return new Api(url);
   }
 }

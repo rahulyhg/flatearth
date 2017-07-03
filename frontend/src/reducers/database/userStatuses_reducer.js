@@ -9,7 +9,6 @@ type LastStatusesType = {
 };
 
 export default (state = { meta: undefined, messages: [] }, action) => {
-  console.log(state, action);
   switch (action.type) {
     case WS_USERS_STATE:
       return {

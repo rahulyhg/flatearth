@@ -7,7 +7,7 @@ const MainBox = styled.div`
   grid-template-columns: repeat(4, minmax(100px, 100fr));
   grid-template-rows: auto 100fr minmax(min-content, 100px);
   grid-gap: .75rem;
-  grid-auto-rows: minmax(10fr, auto);
+  grid-auto-rows: minmax(10fr, auto), fit-content(400px);
 `;
 
 export default MainBox;

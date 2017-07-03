@@ -23,8 +23,12 @@ class Peoplestatus extends Component {
           <UserInfo userInfo={randomMan} />
           {this.props.children}
           {this.props.messages &&
-            this.props.messages.map(x => {
-              return <h1>{x.name}</h1>;
+            this.props.messages.map((x, i) => {
+              return (
+                <h1 key={i}>
+                  {x.name}
+                </h1>
+              );
             })}
         </PeoplestatusStyled>
       </UserlistStyled>
@@ -32,8 +36,7 @@ class Peoplestatus extends Component {
   }
 }
 
-const mapStateToProps = ({ usersStatus }, ownProps) => {
-  
+const mapStateToProps = ({ db: { usersStatus } }, ownProps) => {
   return {
     messages: usersStatus.messages
   };

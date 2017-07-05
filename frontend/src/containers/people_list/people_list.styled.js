@@ -11,10 +11,13 @@ export const PeoplelistStyled = styled.ul`
 export const UserlistStyled = styled.section`
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+  padding: .5rem;
   border: 1px solid rgba(0, 0, 0, .05);
   background-color: #fafafa;
-  margin: 10px;
+  margin-bottom: 10px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position:relative;
 `;
 
 

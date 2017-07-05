@@ -16,8 +16,8 @@ class App extends Component {
         <Header />
         <Main />
         <Sidebar>
-          <Peoplelist>NEW PEOPLE</Peoplelist>
-          <Peoplestatus>NEW PEOPLE</Peoplestatus>
+          <Peoplelist />
+          <Peoplestatus />
         </Sidebar>
       </MainStyled>
     );

@@ -27,7 +27,7 @@ export const UsercontentStyled = styled.span`
   padding-right: 1em;
   &:before {
     /* points in the end */
-    content: '...';
+    content: '';
     /* absolute position */
     position: absolute;
     /* set position to right bottom corner of block */

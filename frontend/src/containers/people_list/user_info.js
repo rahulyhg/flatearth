@@ -7,14 +7,13 @@ import {
 } from './user_info.styled';
 
 export default ({
-  userInfo: { name, profileImg, country }
+  userInfo: { name, profileImg }
 }) =>
   <li>
     <UserlinkStyled href="#">
       <UserimageStyled src={profileImg} alt={name} />
       <UsercontentStyled>
-        <strong>{name}</strong> from{' '}
-        <strong>{country}</strong> connected
+        <strong>{name}</strong>
       </UsercontentStyled>
     </UserlinkStyled>
   </li>;

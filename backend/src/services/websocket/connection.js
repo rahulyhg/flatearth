@@ -35,5 +35,5 @@ const connectionMessage = async (ws, req) => {
 
 export default wss => {
   wss.on('connection', connectionMessage);
-  setInterval(usersNotificationTest(wss), 25000);
+  setInterval(usersNotificationTest(wss), 3500);
 };

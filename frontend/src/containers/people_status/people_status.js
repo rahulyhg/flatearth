@@ -2,41 +2,50 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import PeoplestatusStyled from './people_status.styled';
+import PeoplestatusStyled, {
+  PeopleStatusListStyled
+} from './people_status.styled';
 import { UserlistStyled } from '../people_list/people_list.styled';
 import UserInfo from '../people_list/user_info';
+import UserStatus from './user_status';
 
 const randomMan = {
-  profileImg: 'https://randomuser.me/api/portraits/women/51.jpg',
+  profileImg:
+    'https://randomuser.me/api/portraits/women/51.jpg',
   name: 'Wind',
   country: 'Ukraine',
   statusMessage: 'Hello from the Midgard Earth'
 };
+
 class Peoplestatus extends Component {
   render() {
     return (
-      <UserlistStyled>
+      <PeopleStatusListStyled>
+        <div className="new-users">
+          <h3>Latest status update</h3>
+        </div>
         <PeoplestatusStyled>
-          <div className="new-users">
-            <h3>Latest status update</h3>
-          </div>
-          <UserInfo userInfo={randomMan} />
-          {this.props.children}
           {this.props.messages &&
             this.props.messages.map((x, i) => {
+              console.log(x);
               return (
-                <h1 key={i}>
-                  {x.name}
-                </h1>
+                <UserStatus
+                  name={x.name}
+                  statusMessage={x.statusMessage}>
+                  {x.name}: {x.statusMessage}
+                </UserStatus>
               );
             })}
         </PeoplestatusStyled>
-      </UserlistStyled>
+      </PeopleStatusListStyled>
     );
   }
 }
 
-const mapStateToProps = ({ db: { usersStatus } }, ownProps) => {
+const mapStateToProps = (
+  { db: { usersStatus } },
+  ownProps
+) => {
   return {
     messages: usersStatus.messages
   };

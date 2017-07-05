@@ -1,34 +1,38 @@
 // @flow
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
-import {
-  UserlistStyled,
-  PeoplelistStyled
-} from './people_list.styled';
+import { UserlistStyled, PeoplelistStyled } from './people_list.styled';
 import UserInfo from './user_info';
 
 const pseudoUsers: Array<Object> = [
   {
-    profileImg:
-      'https://randomuser.me/api/portraits/women/51.jpg',
+    profileImg: 'https://randomuser.me/api/portraits/women/51.jpg',
     name: 'Wind',
     country: 'Ukraine'
   },
   {
-    profileImg:
-      'https://randomuser.me/api/portraits/women/44.jpg',
+    profileImg: 'https://randomuser.me/api/portraits/women/44.jpg',
     name: 'Fire',
     country: 'Thailand'
   },
   {
-    profileImg:
-      'https://randomuser.me/api/portraits/women/12.jpg',
+    profileImg: 'https://randomuser.me/api/portraits/women/12.jpg',
     name: 'Water',
     country: 'China33333333333333333333333333123123'
   }
 ];
 
 class Peoplelist extends Component {
+  renderUsers() {
+    const { newUsers } = this.props;
+    return (
+      newUsers &&
+      newUsers.map(x => {
+        return <UserInfo userInfo={x} />;
+      })
+    );
+  }
   render() {
     return (
       <UserlistStyled>
@@ -36,13 +40,17 @@ class Peoplelist extends Component {
           <h3>Meet new people</h3>
         </div>
         <PeoplelistStyled>
-          <UserInfo userInfo={pseudoUsers[0]} />
-          <UserInfo userInfo={pseudoUsers[1]} />
-          <UserInfo userInfo={pseudoUsers[2]} />
+          {this.renderUsers()}
         </PeoplelistStyled>
       </UserlistStyled>
     );
   }
 }
 
-export default Peoplelist;
+const mapStateToProps = ({ db: { newUsers: { users } } }) => {
+  return {
+    newUsers: users
+  };
+};
+
+export default connect(mapStateToProps)(Peoplelist);

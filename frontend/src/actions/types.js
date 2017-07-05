@@ -15,4 +15,4 @@ export const WS_MESSAGE_SEND: string = 'ws_message_send';
 
 /* WS NOTIFICATION */
 export const WS_USERS_STATE: string = 'ws_users_statuses';
-export const WS_NEW_USER: string = 'ws_new_user';
+export const WS_USERS_INIT: string = 'ws_users_init';

@@ -10,11 +10,6 @@ import {
 const UserStatus = ({ name, statusMessage }) =>
   <UserItemStyled>
     <TiMessage />
-    <UserName>
-      {name}
-    </UserName>
-    <UserMention>
-      {statusMessage}
-    </UserMention>
+    <UserName>{name}: </UserName><UserMention>{statusMessage}</UserMention>
   </UserItemStyled>;
 export default UserStatus;

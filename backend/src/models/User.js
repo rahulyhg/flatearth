@@ -6,7 +6,18 @@ const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const UserSchema = new mongoose.Schema({
   name: { type: String, required: 'User name required', unique: true },
-  passwordHash: { type: String },
+  passwordHash: {
+    type: String
+  },
+  coordinates: {
+    type: String
+  },
+  distanceToMiddleEarth: {
+    type: String
+  },
+  country: {
+    type: String
+  },
   email: {
     type: String,
     unique: true,
@@ -28,11 +39,18 @@ const UserSchema = new mongoose.Schema({
     type: ObjectId,
     required: true,
     ref: 'Roles',
-    default: oid('admin-role')
+    default: oid('user-role')
   },
+  profileImg: { type: String },
   lastVisited: { type: Number, default: Date.now() },
   isActivated: { type: Boolean, default: false },
+  created_at: { type: Date, default: Date.now() }
+});
 
+UserSchema.set('toJSON', {
+  transform(doc, { _id, name, email, coordinates, country, distanceToMiddleEarth }) {
+    return { _id, name, email, coordinates, country, distanceToMiddleEarth };
+  }
 });
 
 UserSchema.virtual('password')
@@ -59,11 +77,5 @@ UserSchema.methods.validPassword = function(password) {
 
   return bcrypt.compareSync(password, this.passwordHash);
 };
-
-UserSchema.set('toJSON', {
-  transform(doc, { email, name, role, _id }) {
-    return { _id, email, name, role };
-  }
-});
 
 export default mongoose.model('User', UserSchema);

@@ -1,7 +1,7 @@
 const { secret } = require('rc')('backend');
 module.exports = {
   mongoose: {
-    uri: process.env.MONGO_DB || 'mongodb://sa:sa@ds117311.mlab.com:17311/ninja-resize',
+    uri: process.env.MONGO_DB || 'mongodb://sa:123@ds064649.mlab.com:64649/deb-db-flatearth',
     options: {
       server: {
         socketOptions: {

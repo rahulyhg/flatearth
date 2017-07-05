@@ -2,16 +2,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import PeoplestatusStyled, {
-  PeopleStatusListStyled
-} from './people_status.styled';
+import PeoplestatusStyled, { PeopleStatusListStyled } from './people_status.styled';
 import { UserlistStyled } from '../people_list/people_list.styled';
 import UserInfo from '../people_list/user_info';
 import UserStatus from './user_status';
 
 const randomMan = {
-  profileImg:
-    'https://randomuser.me/api/portraits/women/51.jpg',
+  profileImg: 'https://randomuser.me/api/portraits/women/51.jpg',
   name: 'Wind',
   country: 'Ukraine',
   statusMessage: 'Hello from the Midgard Earth'
@@ -27,11 +24,8 @@ class Peoplestatus extends Component {
         <PeoplestatusStyled>
           {this.props.messages &&
             this.props.messages.map((x, i) => {
-              console.log(x);
               return (
-                <UserStatus
-                  name={x.name}
-                  statusMessage={x.statusMessage}>
+                <UserStatus name={x.name} statusMessage={x.statusMessage} key={`user_status_${i}`}>
                   {x.name}: {x.statusMessage}
                 </UserStatus>
               );
@@ -42,10 +36,7 @@ class Peoplestatus extends Component {
   }
 }
 
-const mapStateToProps = (
-  { db: { usersStatus } },
-  ownProps
-) => {
+const mapStateToProps = ({ db: { usersStatus } }, ownProps) => {
   return {
     messages: usersStatus.messages
   };

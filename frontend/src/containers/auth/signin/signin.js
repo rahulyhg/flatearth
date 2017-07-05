@@ -1,3 +1,5 @@
+// @flow
+
 import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
@@ -9,7 +11,7 @@ import {
   Textarea,
   FieldsetStyled
 } from '../../../theme/components/ReduxFormFieldset.styled';
-import { ButtonTheme } from '../../../theme/components.styled';
+import { ButtonTheme, Homewrapper } from '../../../theme/components.styled';
 import * as actions from '../../../actions';
 
 class Signin extends Component {
@@ -29,7 +31,6 @@ class Signin extends Component {
     });
   }
 
-  
   alertMessage() {
     return this.props.errorMessage
       ? <ul className="alert alert-danger">
@@ -42,25 +43,27 @@ class Signin extends Component {
   render() {
     const { handleSubmit } = this.props;
     return (
-      <SigninForm onSubmit={handleSubmit(this.handleFormSubmit)}>
-        <FieldsetStyled>
-          <Textarea name="user" component="input" type="text" />
-          <Label htmlFor="user">Name:</Label>
-          <Icon />
-        </FieldsetStyled>
-        <FieldsetStyled>
-          <Textarea name="password" component="input" type="password" />
-          <Label htmlFor="password">Password:</Label>
-          <Icon />
-        </FieldsetStyled>
-        {this.alertMessage()}
-        <ControlsStyled>
-          <ButtonTheme action="submit" padding>
-            Sign in
-          </ButtonTheme>
-          <ButtonTheme onClick={this.signupClick}>Sign up</ButtonTheme>
-        </ControlsStyled>
-      </SigninForm>
+      <Homewrapper>
+        <SigninForm onSubmit={handleSubmit(this.handleFormSubmit)}>
+          <FieldsetStyled>
+            <Textarea name="user" component="input" type="text" autoFocus />
+            <Label htmlFor="user">Name:</Label>
+            <Icon />
+          </FieldsetStyled>
+          <FieldsetStyled>
+            <Textarea name="password" component="input" type="password" />
+            <Label htmlFor="password">Password:</Label>
+            <Icon />
+          </FieldsetStyled>
+          {this.alertMessage()}
+          <ControlsStyled>
+            <ButtonTheme action="submit" padding>
+              Sign in
+            </ButtonTheme>
+            <ButtonTheme onClick={this.signupClick}>Sign up</ButtonTheme>
+          </ControlsStyled>
+        </SigninForm>
+      </Homewrapper>
     );
   }
 }

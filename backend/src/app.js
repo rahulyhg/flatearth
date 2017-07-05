@@ -2,7 +2,6 @@
 import Koa from 'koa';
 import fs from 'fs';
 import http from 'http';
-import url from 'url';
 import { join } from 'path';
 import { HOST, PORT } from 'config';
 import mount from 'koa-mount';

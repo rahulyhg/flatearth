@@ -1,14 +1,9 @@
-// @flow
 import styled from 'styled-components';
 
-import { Homewrapper, ButtonTheme } from '../../theme/components.styled';
-import { PulseEffect } from '../../theme/effects/pulse.effect';
+import { ButtonTheme } from '../theme/components.styled';
 
-export const FlatEarthMain = styled(Homewrapper)`
+export const ButtonNavigatorStyled = ButtonTheme.extend`
   font-size: 2rem;
-`;
-
-export const ButtonNavigator = ButtonTheme.extend`
   padding: .85rem 2.13rem;
   color: #fff;
   margin: 1rem;

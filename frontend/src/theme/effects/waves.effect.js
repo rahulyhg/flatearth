@@ -16,3 +16,5 @@ const WavesEffect = keyframes`
 `;
 
 export default WavesEffect;
+
+

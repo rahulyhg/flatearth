@@ -9,19 +9,29 @@ import Sidebar from './containers/sidebar/sidebar';
 import Peoplelist from './containers/people_list/people_list';
 import Peoplestatus from './containers/people_status/people_status';
 
-class App extends Component {
-  render() {
-    return (
-      <MainStyled>
-        <Header />
-        <Main />
-        <Sidebar>
-          <Peoplelist />
-          <Peoplestatus />
-        </Sidebar>
-      </MainStyled>
-    );
-  }
-}
+const App = () =>
+  <MainStyled>
+    <Header />
+    <Main />
+    <Sidebar>
+      <Peoplelist />
+      <Peoplestatus />
+    </Sidebar>
+  </MainStyled>;
+
+// class App extends Component {
+//   render() {
+//     return (
+//       <MainStyled>
+//         <Header />
+//         <Main />
+//         <Sidebar>
+//           <Peoplelist />
+//           <Peoplestatus />
+//         </Sidebar>
+//       </MainStyled>
+//     );
+//   }
+// }
 
 export default App;

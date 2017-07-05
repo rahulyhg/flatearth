@@ -15,8 +15,9 @@ import {
 } from '../../../theme/components/ReduxFormFieldset.styled';
 import { ButtonTheme } from '../../../theme/components.styled';
 
-const FieldInput = (type, fieldName) => ({ input, meta }) => [
-  <Input name={type} {...input} type={type} placeholder={fieldName} key={fieldName} />,
+const FieldInput = (type, fieldName, autoFocus) => ({ input, meta }) => [
+  <Input name={type} {...input} type={type} key={fieldName} autoFocus={autoFocus} />,
+  <Icon />,
   meta.touched &&
     meta.error &&
     <div className="error" key={fieldName + 'Alert'}>
@@ -51,11 +52,12 @@ class Signup extends Component {
 
   render() {
     const { handleSubmit } = this.props;
+    const AUTOFOCUS = true;
     return (
       <FormSignUp onSubmit={handleSubmit(this.handleFormSubmit)}>
         <FieldsetStyled>
           <Label htmlFor="user">Name: </Label>
-          <Field name="user" component={FieldInput('user', 'user')} />
+          <Field name="user" component={FieldInput('user', 'Name', AUTOFOCUS)} />
         </FieldsetStyled>
 
         <FieldsetStyled>

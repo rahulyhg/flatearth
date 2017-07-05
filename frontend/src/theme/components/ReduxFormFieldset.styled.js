@@ -13,7 +13,7 @@ import {
 
 export const Label = styled.label`
   position: absolute;
-  top: 0.25rem;
+  top: ${fontSize / 4}rem;
   pointer-events: none;
   padding-left: ${mfSpacer}rem;
   color: ${labelColor};
@@ -30,16 +30,18 @@ export const Icon = styled.i`
 
   &::before {
     content: '';
-    height: (${fontSize} / 8);
+    height: (${fontSize} / 8)rem;
     width: 0;
     left: 50%;
-    bottom: (${fontSize} / -16);
+    bottom: (${fontSize} / -16)rem;
     position: absolute;
     background: ${focusColor};
     z-index: 2;
     transition: left ${transitionSpeed} ease, width ${transitionSpeed} ease;
   }
 `;
+
+/* Not using, preparing universal input*/
 
 export const Input = styled.input`
   font-family: 'Josefin Sans', sans-serif;
@@ -137,7 +139,7 @@ export const Textarea = styled(Field).attrs({
   }
 `;
 
-export const FieldsetStyled = styled.fieldset`
+export const FieldsetStyled = styled.div`
   position: relative;
   padding-top: 1.1rem;
   padding-bottom: 1.1rem;

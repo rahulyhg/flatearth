@@ -25,7 +25,7 @@ const connectionMessage = async (ws, req) => {
   if (data) safeSend(data);
   // You might use location.query.access_token to authenticate or share sessions
   // or req.headers.cookie (see http://stackoverflow.com/a/16395220/151312)
-  const users = await userController.lastUsers();
+  const users = await userController.lastUsers({ count: 10 });
   safeSend(ws, { type: 'ws_users_init', users });
   ws.on('message', message => {
     console.log('received: %s', message);

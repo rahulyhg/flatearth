@@ -24,11 +24,11 @@ const createStoreWithMiddleware = applyMiddleware(logMiddleware, wsMiddleware, r
 const store = createStoreWithMiddleware(rootReducer);
 
 const token = localStorage.getItem('token');
-const user = localStorage.getItem('user');
+const userInfo = localStorage.getItem('user');
 // If we have a token, consider the user to be signed in
 if (token) {
   // we need update application state
-  store.dispatch({ type: AUTH_USER, payload: { accessToken: token, user } });
+  store.dispatch({ type: AUTH_USER, payload: { accessToken: token, userInfo } });
 }
 const render = Component => {
   ReactDOM.render(

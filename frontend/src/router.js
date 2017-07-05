@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 import Home from './containers/home/home';
 import Signin from './containers/auth/signin/signin';
@@ -20,7 +20,10 @@ const NoMatch = ({ location }) =>
 const Main = () =>
   <Switch>
     <Route exact path="/" component={Home} />
-    <Route path="/signin" component={Signin} />
+    <Route
+      path="/signin"
+      render={(props) => (localStorage.getItem('token') ? <Redirect to="/" /> : <Signin {...props}/>)}
+    />
     <Route path="/signup" component={Signup} />
     <Route path="/profile" component={Profile} />
     <Route path="/flatearth" component={FlatEarth} />

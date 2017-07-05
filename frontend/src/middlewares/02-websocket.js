@@ -15,9 +15,11 @@ const SOCKET_STATES = {
   CLOSING: 2,
   CLOSED: 3
 };
+const BASE_URL = process.env.REACT_APP_BASE_URL;
 
 const wsMiddleware: Middleware<*, *> = ({ dispatch }) => next => {
-  const WS_ROOT: string = process.env.WS_ROOT || process.env.WS_ROOT || 'ws://localhost:3001';
+  const WS_ROOT: string = `ws://${BASE_URL}`;
+  console.log(process.env);
   const websocket: WebSocket = new WebSocket(WS_ROOT);
   console.log(websocket);
   websocket.onopen = () => dispatch(wsConnected());

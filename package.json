@@ -5,7 +5,7 @@
   "author": "Oleg Lustenko",
   "license": "MIT",
   "scripts": {
-    "dev:docker": "docker-compose -f ./dockerfiles/docker-compose-dev.yml up",
+    "dev": "docker-compose -f ./dockerfiles/docker-compose-dev.yml up",
     "prod": "docker-compose -f ./dockerfiles/docker-compose.yml up",
     "build": "yarn prod -- --build",
     "lint-staged": "lint-staged"

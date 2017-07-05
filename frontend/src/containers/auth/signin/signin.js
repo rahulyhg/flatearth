@@ -29,6 +29,7 @@ class Signin extends Component {
     });
   }
 
+  
   alertMessage() {
     return this.props.errorMessage
       ? <ul className="alert alert-danger">

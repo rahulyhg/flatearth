@@ -1,6 +1,6 @@
 // @flow
 
-const BASE_URL = process.env.BASE_URL;
+const BASE_URL: ?string = process.env.REACT_APP_BASE_URL;
 
 type UserAuthType = {
   _id: string,
@@ -86,7 +86,7 @@ class Api {
   }
 
   static createApi() {
-    const url = `/api/v1`;
+    const url: ?string = `/api/v1`;
     return new Api(url);
   }
 }

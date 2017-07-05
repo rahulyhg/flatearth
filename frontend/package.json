@@ -10,6 +10,7 @@
     "normalize.css": "^7.0.0",
     "react": "next",
     "react-dom": "next",
+    "react-icons": "^2.2.5",
     "react-redux": "^5.0.5",
     "react-router": "^4.1.1",
     "react-router-dom": "^4.1.1",
@@ -19,8 +20,8 @@
     "styled-components": "^2.1.0"
   },
   "devDependencies": {
-    "flow-bin": "^0.48.0",
-    "react-scripts": "1.0.7"
+    "flow-bin": "^0.49.1",
+    "react-scripts": "^1.0.10"
   },
   "scripts": {
     "start": "react-scripts start",

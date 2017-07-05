@@ -15,13 +15,12 @@ class Footer extends Component {
     this.formOnSubmit = this.formOnSubmit.bind(this);
   }
   formOnSubmit({ userStatus }) {
-    this.props.statusUpdate(userStatus);
+    this.props.statusUpdateSend({ statusUpdate: userStatus, user: this.props.userInfo });
+    this.props.reset();
   }
-  componentDidMount() {
-    console.log(this);
-  }
+
   render() {
-    const { handleSubmit, newStatus, statusUpdate } = this.props;
+    const { handleSubmit, newStatus, storeNewStatus, change } = this.props;
     return (
       <FormInput onSubmit={handleSubmit(this.formOnSubmit)}>
         <TextareaStyled type="text" name="userStatus" value={newStatus} autoFocus />
@@ -32,11 +31,18 @@ class Footer extends Component {
 }
 
 const mapStateToProps = ({ locals: { user } }) => ({
+  userInfo: user.userInfo,
   newStatus: user.newStatus
 });
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ statusUpdate: actions.wsSendmessage }, dispatch);
+  bindActionCreators(
+    {
+      statusUpdateSend: actions.statusUpdateSend,
+      storeNewStatus: actions.updateUser
+    },
+    dispatch
+  );
 
 export default connect(mapStateToProps, mapDispatchToProps)(
   reduxForm({

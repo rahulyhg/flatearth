@@ -7,6 +7,7 @@ import Signin from './containers/auth/signin/signin';
 import Signup from './containers/auth/signup/signup';
 import Profile from './containers/profile/profile';
 import FlatEarth from './containers/flatearth/flatearth';
+import RequireAuth from './containers/auth/require_auth';
 import { Homewrapper } from './theme/components.styled';
 
 // const SecretUploads = RequireAuth(Uploads);
@@ -26,7 +27,7 @@ const Main = () =>
     />
     <Route path="/signup" component={Signup} />
     <Route path="/profile" component={Profile} />
-    <Route path="/flatearth" component={FlatEarth} />
+    <Route path="/flatearth" component={RequireAuth(FlatEarth)} />
     <Route component={NoMatch} />
   </Switch>;
 

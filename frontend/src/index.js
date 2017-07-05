@@ -10,7 +10,7 @@ import reduxThunk from 'redux-thunk';
 import rootReducer from './reducers';
 import logMiddleware from './middlewares/01-logger';
 import wsMiddleware from './middlewares/02-websocket';
-import { AUTH_USER } from './actions/types';
+import { AUTH_USER, USER_INFO } from './actions/types';
 
 import App from './App';
 import registerServiceWorker from './services/registerServiceWorker';
@@ -18,17 +18,20 @@ import './theme/index.css';
 import 'normalize.css';
 
 const mountNode = document.getElementById('root');
-const createStoreWithMiddleware = applyMiddleware(logMiddleware, wsMiddleware, reduxThunk)(
-  createStore
-);
+const createStoreWithMiddleware = applyMiddleware(
+  logMiddleware,
+  wsMiddleware,
+  reduxThunk
+)(createStore);
 const store = createStoreWithMiddleware(rootReducer);
 
-const token = localStorage.getItem('token');
-const userInfo = localStorage.getItem('user');
+const token: ?string = localStorage.getItem('token');
+const userInfo: ?string = localStorage.getItem('user');
 // If we have a token, consider the user to be signed in
 if (token) {
   // we need update application state
-  store.dispatch({ type: AUTH_USER, payload: { accessToken: token, userInfo } });
+  store.dispatch({ type: AUTH_USER, payload: { accessToken: token } });
+  store.dispatch({ type: USER_INFO, payload: { userInfo: JSON.parse(userInfo) } });
 }
 const render = Component => {
   ReactDOM.render(

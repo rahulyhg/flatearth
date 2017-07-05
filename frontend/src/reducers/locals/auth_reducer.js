@@ -7,13 +7,12 @@ export default (state = {}, action) => {
         ...state,
         error: '',
         authenticated: true,
-        accessToken: action.payload.accessToken,
-        userInfo: action.payload.userInfo
+        accessToken: action.payload.accessToken
       };
     case UNAUTH_USER:
-      return { ...state, error: '', authenticated: false, accessToken: false };
+      return { ...state, error: '', authenticated: false, accessToken: undefined };
     case AUTH_ERROR:
-      return { ...state, error: action.payload, accessToken: false };
+      return { ...state, error: action.payload, accessToken: undefined };
     default:
       return state;
   }

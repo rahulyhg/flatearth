@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import { reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 
-import { SigninForm, ControlsStyled } from './signin.styled';
+import { SigninForm, ControlsStyled, ForgotPassword } from './signin.styled';
 import {
   Label,
   Icon,
@@ -19,6 +19,10 @@ class Signin extends Component {
     super();
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.signupClick = this.signupClick.bind(this);
+  }
+
+  componentWillReceiveProps(nextProps, nextState) {
+    console.log(nextProps);
   }
 
   signupClick() {
@@ -44,6 +48,7 @@ class Signin extends Component {
     const { handleSubmit } = this.props;
     return (
       <Homewrapper>
+        <h1>Please log in or sign up</h1>
         <SigninForm onSubmit={handleSubmit(this.handleFormSubmit)}>
           <FieldsetStyled>
             <Textarea name="user" component="input" type="text" autoFocus />
@@ -62,6 +67,7 @@ class Signin extends Component {
             </ButtonTheme>
             <ButtonTheme onClick={this.signupClick}>Sign up</ButtonTheme>
           </ControlsStyled>
+          <ForgotPassword to="/">Forgot password ?</ForgotPassword>
         </SigninForm>
       </Homewrapper>
     );

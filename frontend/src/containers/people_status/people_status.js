@@ -14,29 +14,38 @@ const randomMan = {
   statusMessage: 'Hello from the Midgard Earth'
 };
 
-class Peoplestatus extends Component {
-  render() {
-    return (
-      <PeopleStatusListStyled>
-        <div className="new-users">
-          <h3>Latest status update</h3>
-        </div>
-        <PeoplestatusStyled>
-          {this.props.messages &&
-            this.props.messages.map((x, i) => {
-              return (
-                <UserStatus name={x.name} statusMessage={x.statusMessage} key={`user_status_${i}`}>
-                  {x.name}: {x.statusMessage}
-                </UserStatus>
-              );
-            })}
-        </PeoplestatusStyled>
-      </PeopleStatusListStyled>
-    );
-  }
-}
+const renderUserStatus = props =>
+  props.messages &&
+  props.messages.map(({ statusUpdate, user }, i) =>
+    <UserStatus name={user.name} statusUpdate={statusUpdate} key={`user_status_${i}`} />
+  );
 
-const mapStateToProps = ({ db: { usersStatus } }, ownProps) => {
+const Peoplestatus = props =>
+  <PeopleStatusListStyled>
+    <div className="new-users">
+      <h3>Latest status update</h3>
+    </div>
+    <PeoplestatusStyled>
+      {renderUserStatus(props)}
+    </PeoplestatusStyled>
+  </PeopleStatusListStyled>;
+
+// class Peoplestatus extends Component {
+//   render() {
+//     return (
+//       <PeopleStatusListStyled>
+//         <div className="new-users">
+//           <h3>Latest status update</h3>
+//         </div>
+//         <PeoplestatusStyled>
+//           {renderUserStatus(props)}
+//         </PeoplestatusStyled>
+//       </PeopleStatusListStyled>
+//     );
+//   }
+// }
+
+const mapStateToProps = ({ db: { usersStatus } }) => {
   return {
     messages: usersStatus.messages
   };

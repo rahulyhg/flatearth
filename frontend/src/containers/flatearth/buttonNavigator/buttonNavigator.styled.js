@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { ButtonTheme } from '../theme/components.styled';
+import { ButtonTheme } from '../../../theme/components.styled';
 
 export const ButtonNavigatorStyled = ButtonTheme.extend`
   font-size: 2rem;

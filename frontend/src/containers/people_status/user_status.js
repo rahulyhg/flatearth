@@ -7,9 +7,9 @@ import {
   UserName
 } from './user_status.styled';
 
-const UserStatus = ({ name, statusMessage }) =>
+const UserStatus = ({ name, statusUpdate }) =>
   <UserItemStyled>
     <TiMessage />
-    <UserName>{name}: </UserName><UserMention>{statusMessage}</UserMention>
+    <UserName>{name}: </UserName><UserMention>{statusUpdate}</UserMention>
   </UserItemStyled>;
 export default UserStatus;

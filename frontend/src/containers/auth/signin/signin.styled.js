@@ -1,7 +1,7 @@
 // @flow
 import styled from 'styled-components';
 import { Field } from 'redux-form';
-
+import { Link } from 'react-router-dom';
 import { FormTheme } from '../../../theme/components.styled';
 
 export const FormSignUp = FormTheme;
@@ -92,4 +92,16 @@ export const FieldsetStyled = styled.fieldset`
 export const ControlsStyled = styled.div`
   display: flex;
   flex-direction: row;
+`;
+
+export const ForgotPassword = styled(Link)`
+  display:flex;
+  color:#008489;
+  padding-top: .5rem;
+  align-self:flex-end;
+  font-size: 1.1rem;
+  text-decoration: none;
+  &:hover{
+    text-decoration: underline;
+  }
 `;

@@ -3,13 +3,14 @@
 import type { Dispatch } from 'redux';
 
 import api from '../services/api';
-import { AUTH_USER, UNAUTH_USER, AUTH_ERROR } from './types';
+import { AUTH_USER, UNAUTH_USER, AUTH_ERROR, USER_INFO } from './types';
 
 type UserAuthType = {
   _id: string,
   email: string,
   name: string,
-  role: string
+  coordinates: ?string,
+  userStatus: ?string
 };
 type SuccessSigninType = {
   user: UserAuthType,
@@ -45,12 +46,16 @@ export function signinUser(
     const signInStatus = await api.signin({ user, password });
     if (signInStatus.status === 'success') {
       // if request is good...
-      const { user: userInfo, token: accessToken }: SuccessSigninType = signInStatus.message;
+      const {
+        user: userInfo,
+        token: accessToken
+      }: SuccessSigninType = signInStatus.message;
       // -- Update State to indicate is authenticated
-      dispatch({ type: AUTH_USER, payload: { userInfo, accessToken } });
+      dispatch({ type: AUTH_USER, payload: { accessToken } });
+      dispatch({ type: USER_INFO, payload: { userInfo } });
       // -- Save the JWT token
       localStorage.setItem('token', accessToken);
-      localStorage.setItem('user', JSON.stringify(user));
+      localStorage.setItem('user', JSON.stringify(userInfo));
       // -- redirect to the  router '/feature'
       redirect();
     } else {
@@ -78,7 +83,7 @@ export function signupUser({ user, password, email }, callback: Function) {
     const signupStatus = await api.signup({ user, password, email });
     if (signupStatus.status === 'success') {
       // const { id, name }: SuccessSignUpType = signupStatus.message;
-      // dispatch(signoutUser());
+      dispatch(signoutUser());
       callback();
     } else {
       dispatch(authError(signupStatus.message));

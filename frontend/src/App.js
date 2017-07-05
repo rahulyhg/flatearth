@@ -1,22 +1,19 @@
 // @flow
-import React, { Component } from 'react';
+import React from 'react';
 
 import MainStyled from './theme/main.styled';
 import Main from './router';
 
 import Header from './containers/header/header';
-import Sidebar from './containers/sidebar/sidebar';
-import Peoplelist from './containers/people_list/people_list';
-import Peoplestatus from './containers/people_status/people_status';
+import Sidebar from './components/sidebar';
+import Footer from './components/footer';
 
 const App = () =>
   <MainStyled>
     <Header />
     <Main />
-    <Sidebar>
-      <Peoplelist />
-      <Peoplestatus />
-    </Sidebar>
+    <Sidebar />
+    <Footer />
   </MainStyled>;
 
 // class App extends Component {

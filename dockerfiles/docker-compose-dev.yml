@@ -9,7 +9,7 @@ services:
     ports:
       - "${frontend_port}:3000"
     environment: 
-      __DEV__: 1
+      REACT_APP___DEV__: 1
       CHOKIDAR_USEPOLLING: 1
       REACT_APP_BASE_URL: localhost:${backend_port}
   backend:

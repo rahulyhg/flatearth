@@ -16,14 +16,26 @@ import {
 import { ButtonTheme } from '../../../theme/components.styled';
 
 const FieldInput = (type, fieldName, autoFocus) => ({ input, meta }) => [
-  <Input name={type} {...input} type={type} key={fieldName} autoFocus={autoFocus} />,
-  <Icon />,
+  <Input
+    name={type}
+    type={type}
+    key={`${fieldName}_signup`}
+    autoFocus={autoFocus}
+    {...input}
+  />,
+  <Icon key={`${fieldName}_signupIcon`} />,
   meta.touched &&
     meta.error &&
-    <div className="error" key={fieldName + 'Alert'}>
+    <div className="error" key={`${fieldName}_Alert`}>
       {meta.error}
     </div>
 ];
+
+/* Redux form requires static components it's temporaly hack*/
+const Name = FieldInput('user', 'name', true);
+const Email = FieldInput('email', 'email');
+const Password = FieldInput('password', 'password');
+const PasswordConfirm = FieldInput('password', 'passwordConfirm');
 
 class Signup extends Component {
   handleFormSubmit: Function;
@@ -57,20 +69,20 @@ class Signup extends Component {
       <FormSignUp onSubmit={handleSubmit(this.handleFormSubmit)}>
         <FieldsetStyled>
           <Label htmlFor="user">Name: </Label>
-          <Field name="user" component={FieldInput('user', 'Name', AUTOFOCUS)} />
+          <Field name="user" component={Name} />
         </FieldsetStyled>
 
         <FieldsetStyled>
           <Label htmlFor="email">Email:</Label>
-          <Textarea name="email" component={FieldInput('email', 'email')} />
+          <Textarea name="email" component={Email} />
         </FieldsetStyled>
         <FieldsetStyled>
           <Label htmlFor="password">Password:</Label>
-          <Textarea name="password" component={FieldInput('password', 'password')} />
+          <Textarea name="password" component={Password} />
         </FieldsetStyled>
         <FieldsetStyled>
           <Label htmlFor="passwordConfirm">Confirm Password:</Label>
-          <Textarea name="passwordConfirm" component={FieldInput('password', 'passwordConfirm')} />
+          <Textarea name="passwordConfirm" component={PasswordConfirm} />
         </FieldsetStyled>
         {this.renderAlert()}
         <ButtonTheme>Sign up!</ButtonTheme>

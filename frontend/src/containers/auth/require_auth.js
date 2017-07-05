@@ -10,7 +10,7 @@ export default function(ComposedComponent) {
 
     componentWillMount() {
       if (!this.props.authenticated) {
-        this.context.router.history.push('/');
+        this.context.router.history.push('/signin');
       }
     }
 

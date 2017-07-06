@@ -3,12 +3,14 @@ import bodyValidation from '../service/bodyValidation';
 
 export default {
   async post(ctx) {
-    console.log(ctx.request.body);
+    if (process.env.__DEV__) {
+      console.log(ctx.request.body);
+    }
+    // TODO flow-io validation
     bodyValidation(ctx, 'user', 'email', 'password');
     const { user: name, email, password } = ctx.request.body;
-    let user;
     try {
-      user = await User.create({ name, email, password });
+      await User.create({ name, email, password });
     } catch (e) {
       let errFields;
       if (e.errors) {
@@ -17,9 +19,11 @@ export default {
           errFields = e.errors[field].message;
         });
       } else {
+        /*eslint-disable */
         const duplicate = e.message.match(
           /index\:\ (?:.*\.)?\$?(?:([_a-z0-9]*)(?:_\d*)|([_a-z0-9]*))\s*dup key/i
         );
+        /*eslint-enable */
         errFields = duplicate[1] || duplicate[2];
         errFields = `${errFields.toUpperCase()} in use `;
         ctx.log.error({ err: e }, `signup error ${errFields}`);

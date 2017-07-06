@@ -6,6 +6,8 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
 import reduxThunk from 'redux-thunk';
+import 'normalize.css';
+import './theme/index.css';
 
 import rootReducer from './reducers';
 import logMiddleware from './middlewares/01-logger';
@@ -14,8 +16,6 @@ import { AUTH_USER, USER_INFO } from './actions/types';
 
 import App from './App';
 import registerServiceWorker from './services/registerServiceWorker';
-import './theme/index.css';
-import 'normalize.css';
 
 const mountNode = document.getElementById('root');
 const createStoreWithMiddleware = applyMiddleware(
@@ -46,11 +46,13 @@ const render = Component => {
 
 if (module.hot) {
   module.hot.accept('./App', () => {
+    // eslint-disable-next-line
     const NewApp = require('./App').default;
     render(NewApp);
   });
 
   module.hot.accept('./reducers', () => {
+    // eslint-disable-next-line
     const nextReducer = require('./reducers').default;
     store.replaceReducer(nextReducer);
   });

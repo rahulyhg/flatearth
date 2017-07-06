@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import { ButtonNavigatorStyled } from './buttonNavigator.styled';
+import ButtonNavigatorStyled from './buttonNavigator.styled';
 
 const findUserPosition = (callback: Function) => () => {
   navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude } }) => {
@@ -16,12 +16,9 @@ const findUserPosition = (callback: Function) => () => {
   // );
 };
 
-const ButtonNavigator = ({ callback }: { callback: Function }) => {
-  return (
-    <ButtonNavigatorStyled orange onClick={findUserPosition(callback)}>
-      Find my position
-    </ButtonNavigatorStyled>
-  );
-};
+const ButtonNavigator = ({ callback }: { callback: Function }) =>
+  <ButtonNavigatorStyled orange onClick={findUserPosition(callback)}>
+    Find my position
+  </ButtonNavigatorStyled>;
 
 export default ButtonNavigator;

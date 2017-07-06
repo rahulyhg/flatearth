@@ -1,21 +1,21 @@
 // @flow
 import mongoose from 'mongoose';
 import config from 'config';
-import createEmptyDb from './db/createEmtpyDb';
-import fixtures from '../fixtures';
+// import createEmptyDb from './db/createEmtpyDb';
+// import fixtures from '../fixtures';
 
-const { users, roles } = fixtures;
+// const { users, roles } = fixtures;
 
-async function createFixtures(Model, fixture) {
-  await Model.remove({});
-  for (let data of fixture) {
-    try {
-      await Model.create(data);
-    } catch (e) {
-      throw new Error(e);
-    }
-  }
-}
+// async function createFixtures(Model, fixture) {
+//   await Model.remove({});
+//   for (let data of fixture) {
+//     try {
+//       await Model.create(data);
+//     } catch (e) {
+//       throw new Error(e);
+//     }
+//   }
+// }
 
 export default () =>
   new Promise((resolve, reject) => {

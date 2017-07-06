@@ -1,8 +1,6 @@
-import styled from 'styled-components';
-
 import { ButtonTheme } from '../../../theme/components.styled';
 
-export const ButtonNavigatorStyled = ButtonTheme.extend`
+const ButtonNavigatorStyled = ButtonTheme.extend`
   font-size: 2rem;
   padding: .85rem 2.13rem;
   color: #fff;
@@ -32,3 +30,5 @@ export const ButtonNavigatorStyled = ButtonTheme.extend`
     }
   }
 `;
+
+export default ButtonNavigatorStyled

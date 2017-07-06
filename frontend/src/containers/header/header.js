@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
 
 import {
   HeaderStyled,
@@ -44,11 +45,12 @@ class Header extends Component {
     );
   }
 }
-
-const mapStateToProps = ({ locals: { auth } }, ownProps) => {
-  return {
-    authenticated: auth.authenticated
-  };
+Header.propTypes = {
+  authenticated: PropTypes.bool
 };
+
+const mapStateToProps = ({ locals: { auth } }) => ({
+  authenticated: auth.authenticated
+});
 
 export default connect(mapStateToProps)(Header);

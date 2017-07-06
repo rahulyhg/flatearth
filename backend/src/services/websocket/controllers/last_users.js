@@ -1,10 +1,8 @@
 // @flow
-import type { Context } from 'koa';
-
 import user from '../service/user';
 
 export default {
-  lastUsers(count) {
+  lastUsers(count: number) {
     return user.lastUsers(count);
   }
 };

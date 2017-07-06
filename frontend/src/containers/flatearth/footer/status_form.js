@@ -3,13 +3,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { reduxForm } from 'redux-form';
 import { bindActionCreators } from 'redux';
+import { PropTypes } from 'prop-types';
 
 import * as actions from '../../../actions/ui';
-import ButtonTheme from '../../../theme/components/button.styled';
 
 import { FormInput, TextareaStyled, ButtonStatus } from './status_form.styled';
 
 class Footer extends Component {
+  formOnSubmit: Function;
   constructor() {
     super();
     this.formOnSubmit = this.formOnSubmit.bind(this);
@@ -20,7 +21,7 @@ class Footer extends Component {
   }
 
   render() {
-    const { handleSubmit, newStatus, storeNewStatus, change } = this.props;
+    const { handleSubmit, newStatus } = this.props;
     return (
       <FormInput onSubmit={handleSubmit(this.formOnSubmit)}>
         <TextareaStyled type="text" name="userStatus" value={newStatus} autoFocus />
@@ -29,6 +30,14 @@ class Footer extends Component {
     );
   }
 }
+
+Footer.propTypes = {
+  statusUpdateSend: PropTypes.func,
+  reset: PropTypes.func,
+  handleSubmit: PropTypes.func,
+  newStatus: PropTypes.string,
+  userInfo: PropTypes.object
+};
 
 const mapStateToProps = ({ locals: { user } }) => ({
   userInfo: user.userInfo,

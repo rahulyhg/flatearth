@@ -60,13 +60,13 @@ UserSchema.virtual('password')
         this.invalidate('password', 'Пароль должен быть минимум 4 символа.');
       }
     }
-    this._plainPassword = password;
+    this.plainPassword = password;
 
     this.salt = bcrypt.genSaltSync(8);
     this.passwordHash = bcrypt.hashSync(password, this.salt);
   })
   .get(function() {
-    return this._plainPassword;
+    return this.plainPassword;
   });
 
 UserSchema.methods.validPassword = function(password) {

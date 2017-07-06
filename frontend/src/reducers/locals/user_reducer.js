@@ -10,6 +10,7 @@ export default (state = {}, action) => {
           ...action.payload.userInfo
         }
       };
+    default:
+      return state;
   }
-  return state;
 };

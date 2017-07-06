@@ -3,9 +3,11 @@
 import React, { Component } from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
+
 import * as actions from '../../../actions';
 
-import { FormSignUp } from './signup.styled';
+import FormSignUp from './signup.styled';
 import {
   Label,
   Icon,
@@ -16,13 +18,7 @@ import {
 import { ButtonTheme } from '../../../theme/components.styled';
 
 const FieldInput = (type, fieldName, autoFocus) => ({ input, meta }) => [
-  <Input
-    name={type}
-    type={type}
-    key={`${fieldName}_signup`}
-    autoFocus={autoFocus}
-    {...input}
-  />,
+  <Input name={type} type={type} key={`${fieldName}_signup`} autoFocus={autoFocus} {...input} />,
   <Icon key={`${fieldName}_signupIcon`} />,
   meta.touched &&
     meta.error &&
@@ -32,7 +28,8 @@ const FieldInput = (type, fieldName, autoFocus) => ({ input, meta }) => [
 ];
 
 /* Redux form requires static components it's temporaly hack*/
-const Name = FieldInput('user', 'name', true);
+const AUTOFOCUS = true;
+const Name = FieldInput('user', 'name', AUTOFOCUS);
 const Email = FieldInput('email', 'email');
 const Password = FieldInput('password', 'password');
 const PasswordConfirm = FieldInput('password', 'passwordConfirm');
@@ -64,7 +61,7 @@ class Signup extends Component {
 
   render() {
     const { handleSubmit } = this.props;
-    const AUTOFOCUS = true;
+
     return (
       <FormSignUp onSubmit={handleSubmit(this.handleFormSubmit)}>
         <FieldsetStyled>
@@ -109,6 +106,13 @@ const validate = ({ password, email, passwordConfirm, user }) => {
     errors.password = 'Password must match';
   }
   return errors;
+};
+
+Signup.propTypes = {
+  history: PropTypes.obj,
+  errorMessage: PropTypes.string,
+  signupUser: PropTypes.func,
+  handleSubmit: PropTypes.func
 };
 
 const mapStateToProps = ({ locals: { auth } }) => ({

@@ -2,10 +2,12 @@
 import styled from 'styled-components';
 
 import { Homewrapper, ButtonTheme } from '../../theme/components.styled';
-import { PulseEffect } from '../../theme/effects/pulse.effect';
 
 export const FlatEarthMain = styled(Homewrapper)`
   font-size: 2rem;
+  & > p {
+    font-size: 1.5rem;
+  };
 `;
 
 export const ButtonNavigator = ButtonTheme.extend`

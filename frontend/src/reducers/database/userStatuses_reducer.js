@@ -2,12 +2,6 @@
 
 import { WS_USERS_STATE } from '../../actions/types';
 
-type LastStatusesType = {
-  id: string,
-  name: string,
-  statusMessage: string
-};
-
 export default (state = { meta: undefined, messages: [] }, action) => {
   switch (action.type) {
     case WS_USERS_STATE:
@@ -16,6 +10,7 @@ export default (state = { meta: undefined, messages: [] }, action) => {
         meta: { ...action.payload.meta },
         messages: [...state.messages, action.payload.newStatus]
       };
+    default:
+      return state;
   }
-  return state;
 };

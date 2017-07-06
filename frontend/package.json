@@ -8,6 +8,7 @@
     "eslint-config-prettier": "^2.3.0",
     "eslint-plugin-react": "^7.1.0",
     "normalize.css": "^7.0.0",
+    "prop-types": "^15.5.10",
     "react": "next",
     "react-dom": "next",
     "react-icons": "^2.2.5",
@@ -33,16 +34,17 @@
   "eslintConfig": {
     "parser": "babel-eslint",
     "root": true,
-    "plugins": [
-      "flowtype",
-      "react"
-    ],
-    "extends": [
-      "airbnb-base",
-      "prettier"
-    ],
+    "plugins": ["flowtype", "react"],
+    "extends": ["airbnb-base", "prettier", "plugin:react/recommended"],
     "env": {
-      "browser": true
+      "browser": true,
+      "jest": true
+    },
+    "globals": {
+      "__DEV__": true
+    },
+    "rules": {
+      "no-underscore-dangle": 0
     }
   }
 }

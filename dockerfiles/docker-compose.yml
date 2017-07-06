@@ -7,7 +7,9 @@ services:
     volumes:
       - "../frontend:/srv/app"
     ports:
-      - "${frontend_port}:3000"   
+      - "${frontend_port}:3000"
+    environment:
+      REACT_APP_BASE_URL: localhost:${backend_port}  
   backend:
     build:
       context: ..

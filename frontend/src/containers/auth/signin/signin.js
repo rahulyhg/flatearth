@@ -1,28 +1,22 @@
 // @flow
 
 import React, { Component } from 'react';
+import { PropTypes } from 'prop-types';
 import { reduxForm } from 'redux-form';
 import { connect } from 'react-redux';
 
 import { SigninForm, ControlsStyled, ForgotPassword } from './signin.styled';
-import {
-  Label,
-  Icon,
-  Textarea,
-  FieldsetStyled
-} from '../../../theme/components/ReduxFormFieldset.styled';
+import { Label, Icon, Textarea, FieldsetStyled } from '../../../theme/components/ReduxFormFieldset.styled';
 import { ButtonTheme, Homewrapper } from '../../../theme/components.styled';
 import * as actions from '../../../actions';
 
 class Signin extends Component {
+  signupClick: Function;
+  handleFormSubmit: Function;
   constructor() {
     super();
     this.handleFormSubmit = this.handleFormSubmit.bind(this);
     this.signupClick = this.signupClick.bind(this);
-  }
-
-  componentWillReceiveProps(nextProps, nextState) {
-    console.log(nextProps);
   }
 
   signupClick() {
@@ -74,11 +68,16 @@ class Signin extends Component {
   }
 }
 
-const mapStateToProps = ({ locals: { auth } }) => {
-  return {
-    errorMessage: auth.error
-  };
+Signin.propTypes = {
+  history: PropTypes.obj,
+  errorMessage: PropTypes.string,
+  signinUser: PropTypes.func,
+  handleSubmit: PropTypes.func
 };
+
+const mapStateToProps = ({ locals: { auth } }) => ({
+  errorMessage: auth.error
+});
 
 export default connect(mapStateToProps, actions)(
   reduxForm({

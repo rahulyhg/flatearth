@@ -1,7 +1,7 @@
 // @flow
 import styled from 'styled-components';
-import { Label, Textarea } from '../../../theme/components/ReduxFormFieldset.styled';
-import { PulseEffect } from '../../../theme/effects/pulse.effect';
+import { Textarea } from '../../../theme/components/ReduxFormFieldset.styled';
+import PulseEffect from '../../../theme/effects/pulse.effect';
 import ButtonTheme from '../../../theme/components/button.styled';
 
 export const FormInput = styled.form`

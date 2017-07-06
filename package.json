@@ -8,7 +8,9 @@
     "dev": "docker-compose -f ./dockerfiles/docker-compose-dev.yml up",
     "prod": "docker-compose -f ./dockerfiles/docker-compose.yml up",
     "build": "yarn prod -- --build",
-    "lint-staged": "lint-staged"
+    "lint-staged": "lint-staged",
+    "lint:js_backend": "eslint backend/src/**/*.js",
+    "lint:js_frontend": "eslint frontend/src/**/*.js"
   },
   "lint-staged": {
     "frontend/src/**/*.js": "eslint",
@@ -25,7 +27,12 @@
     "Docker"
   ],
   "devDependencies": {
-    "eslint-plugin-import": "^2.2.0",
+    "babel-eslint": "^7.2.3",
+    "eslint-config-airbnb-base": "^11.2.0",
+    "eslint-config-prettier": "^2.3.0",
+    "eslint-plugin-flowtype": "^2.34.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-react": "^7.1.0",
     "pre-commit": "^1.2.2"
   },
   "eslintConfig": {
@@ -37,15 +44,18 @@
     ],
     "extends": [
       "airbnb-base",
-      "prettier"
+      "prettier",
+      "plugin:react/recommended"
     ],
     "env": {
       "node": true
+    },
+    "globals": {
+      "__DEV__": true
     }
   },
   "dependencies": {
-    "eslint-config-airbnb-base": "^11.2.0",
-    "eslint-config-prettier": "^2.2.0",
+    "eslint": "^3.19.0",
     "lint-staged": "^4.0.0"
   }
 }

@@ -1,6 +1,7 @@
 // @flow
 
-const BASE_URL: ?string = process.env.REACT_APP_BASE_URL;
+// TODO depend on deploying set global environment
+// const BASE_URL: ?string = process.env.REACT_APP_BASE_URL;
 
 type UserAuthType = {
   _id: string,
@@ -55,7 +56,9 @@ class Api {
   }
 
   signup({ user, email, password }: { user: string, email: string, password: string }): Promise<*> {
-    console.log(user, email, password);
+    if (process.env.__DEV__) {
+      console.log(user, email, password);
+    }
     return this.fetch(`${this.url}/auth/signup`, {
       email,
       user,
@@ -86,7 +89,7 @@ class Api {
   }
 
   static createApi() {
-    const url: ?string = `/api/v1`;
+    const url: string = `/api/v1`;
     return new Api(url);
   }
 }

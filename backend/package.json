@@ -68,7 +68,7 @@
     "eslint-config-airbnb-base": "^11.1.0",
     "eslint-config-prettier": "^2.3.0",
     "eslint-plugin-flowtype": "^2.30.3",
-    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-react": "^7.0.1",
     "nodemon": "^1.11.0",
     "nyc": "^11.0.3",
@@ -80,16 +80,16 @@
   "eslintConfig": {
     "parser": "babel-eslint",
     "root": true,
-    "plugins": [
-      "flowtype",
-      "react"
-    ],
-    "extends": [
-      "airbnb-base",
-      "prettier"
-    ],
+    "plugins": ["flowtype", "react"],
+    "extends": ["airbnb-base", "prettier"],
     "env": {
       "node": true
+    },
+    "globals": {
+      "__DEV__": true
+    },
+    "rules": {
+      "no-underscore-dangle": 0
     }
   },
   "lint-staged": {
@@ -99,18 +99,12 @@
   "ava": {
     "modules": true,
     "tap": "true",
-    "require": [
-      "babel-register"
-    ],
+    "require": ["babel-register"],
     "failFast": true,
     "concurrency": 1,
     "failWithoutAssertions": false,
     "babel": "inherit",
-    "match": [
-      "!dist",
-      "!.history",
-      "**/*.test.js"
-    ]
+    "match": ["!dist", "!.history", "**/*.test.js"]
   },
   "babel": {
     "presets": [

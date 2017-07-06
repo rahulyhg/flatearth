@@ -23,11 +23,6 @@ type AuthErrorActionType = {
   payload: string
 };
 
-type SuccessSignUpType = {
-  id: string,
-  name: string
-};
-
 const SERVERNOTRESPOND = 'Unexpected token P in JSON at position 0';
 
 export function authError(error: string): AuthErrorActionType {
@@ -46,10 +41,7 @@ export function signinUser(
     const signInStatus = await api.signin({ user, password });
     if (signInStatus.status === 'success') {
       // if request is good...
-      const {
-        user: userInfo,
-        token: accessToken
-      }: SuccessSigninType = signInStatus.message;
+      const { user: userInfo, token: accessToken }: SuccessSigninType = signInStatus.message;
       // -- Update State to indicate is authenticated
       dispatch({ type: AUTH_USER, payload: { accessToken } });
       dispatch({ type: USER_INFO, payload: { userInfo } });
@@ -58,14 +50,13 @@ export function signinUser(
       localStorage.setItem('user', JSON.stringify(userInfo));
       // -- redirect to the  router '/feature'
       redirect();
+    } else if (signInStatus.message === SERVERNOTRESPOND) {
+      // if server is down ..
+      dispatch(authError("Can't connect to server, try later"));
     } else {
       // if request is bad ..
-      if (signInStatus.message === SERVERNOTRESPOND) {
-        dispatch(authError("Can't connect to server, try later"));
-      } else {
-        dispatch(authError(signInStatus.message));
-      }
       // - Show an error to the user
+      dispatch(authError(signInStatus.message));
     }
   };
 }

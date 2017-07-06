@@ -1,9 +1,6 @@
 // @flow
-// eslint-disable prefer-template
 import styled from 'styled-components';
 import WavesEffect from '../effects/waves.effect';
-
-// const Button = WavesEffect.withComponent('button');
 
 const ButtonStyled = styled.button`
   display: flex;
@@ -32,7 +29,7 @@ const ButtonStyled = styled.button`
     transform-origin: 50% 50%;
   }
   &:focus:not(:active)::after {
-    animation: ${props => (props.waves ? WavesEffect : WavesEffect + ' 1.5s ease-out')};
+    animation: ${props => (props.waves ? WavesEffect : WavesEffect)} 1.5s ease-out;
   }
 `;
 

@@ -11,6 +11,7 @@ export default (state = { meta: undefined, users: [] }, action) => {
         meta: { ...action.payload.meta },
         users: [...state.users, ...action.payload.users]
       };
+    default:
+      return state;
   }
-  return state;
 };

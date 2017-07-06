@@ -25,6 +25,10 @@ export default function(ComposedComponent) {
     }
   }
 
+  Authentication.propTypes = {
+    authenticated: PropTypes.bool.isRequired
+  };
+
   function mapStateToProps({ locals: { auth } }) {
     return { authenticated: auth.authenticated };
   }

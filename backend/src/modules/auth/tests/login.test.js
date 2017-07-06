@@ -1,2 +1,2 @@
-import test from 'ava';
-import require from 'supertest';
+// import test from 'ava';
+// import require from 'supertest';

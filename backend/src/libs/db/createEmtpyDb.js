@@ -4,29 +4,8 @@ import thunkify from 'thunkify';
 
 log();
 
-export default async () => {
-  let db;
-
-  if (mongoose.connection.readyState === 1) {
-    // connected
-    db = mongoose.connection.db;
-  } else {
-    db = await thunkify(mongoose.connection.on)('open');
-  }
-
-  await clearDatabase(db);
-  await ensureIndexes();
-  await ensureCapped();
-};
-
 async function clearDatabase(db) {
   const collections = await db.listCollections().toArray();
-  // var collections = yield new Promise(function(resolve, reject) {
-  //   db.listCollections().toArray(function(err, items) {
-  //     if (err) return reject(err);
-  //     resolve(items);
-  //   });
-  // });
 
   const collectionNames = collections
     .map(collection => {
@@ -42,7 +21,7 @@ async function clearDatabase(db) {
 
 // wait till indexes are complete, especially unique
 // required to throw errors
-async function ensureIndexes(db) {
+async function ensureIndexes() {
   await mongoose.modelNames().map(modelName => {
     const model = mongoose.models[modelName];
     return thunkify(model.ensureIndexes.bind(model))();
@@ -55,10 +34,27 @@ async function ensureCapped(db) {
     const model = mongoose.models[modelName];
 
     const schema = model.schema;
+    /*eslint-disable */
     if (!schema.options.capped) return;
     return thunkify(db.command)({
       convertToCapped: model.collection.name,
       size: schema.options.capped
     });
+    /*eslint-enable */
   });
 }
+
+export default async () => {
+  let db;
+
+  if (mongoose.connection.readyState === 1) {
+    // connected
+    db = mongoose.connection.db;
+  } else {
+    db = await thunkify(mongoose.connection.on)('open');
+  }
+
+  await clearDatabase(db);
+  await ensureIndexes();
+  await ensureCapped();
+};

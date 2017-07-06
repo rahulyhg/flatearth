@@ -1,4 +1,5 @@
 import oid from '../libs/db/oid';
+
 const adminID = oid('admin');
 export default {
   roles: [{ _id: oid('admin-role'), title: 'admin', _creator: adminID }],

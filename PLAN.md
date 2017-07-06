@@ -1,5 +1,5 @@
 ## Simple Mind Map for simplify direction
-![alt tag](https://raw.githubusercontent.com/OlegLustenko/flatearth/master/docs/MindMap.jpg)
+![alt tag](https://github.com/OlegLustenko/flatearth/blob/master/docs/MindMap.jpg?raw=true)
 
 
 # Backend

@@ -1,3 +1,6 @@
+## Simple Mind Map for simplify direction
+![alt tag](https://raw.githubusercontent.com/OlegLustenko/flatearth/master/docs/MindMap.png)
+
 # Backend
   ## Database 
   MongoDB seems enough

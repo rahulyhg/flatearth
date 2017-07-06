@@ -28,3 +28,4 @@ Environment variables can be changed in `.env` file
 and
 `yarn dev` or `npm run dev` for subsequent runs
 
+Please take a look on [PLAN/TODO](https://raw.githubusercontent.com/OlegLustenko/flatearth/master/PLAN.md)

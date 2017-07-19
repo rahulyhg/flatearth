@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "docker-compose -f ./dockerfiles/docker-compose-dev.yml up",
     "prod": "docker-compose -f ./dockerfiles/docker-compose.yml up",
+    "deploy":"docker swarm deploy -c ./dockerfiles/docker-compose.yml flatearth",
     "build": "yarn prod -- --build",
     "lint-staged": "lint-staged",
     "lint:js_backend": "eslint backend/src/**/*.js",

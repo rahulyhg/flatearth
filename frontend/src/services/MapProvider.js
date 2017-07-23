@@ -1,19 +1,30 @@
 // @flow
 
 // TODO
+import React from 'react';
 
-import GoogleApi './google-map/googleApi';
-
+import initMap from './google-map/googleApi';
 
 class MapProvider {
-  constructor(mapProvider) {
+  constructor(mapProvider: ?{}) {
     this.api = mapProvider;
   }
 
   computeDistanceBetween() {
-    this.api
+    this.api;
+  }
+
+  distanceToMiddleEarth(location) {
+    
+  }
+
+  static connect(mapProvider) {
+    let map;
+    mapProvider(mapInit => {
+      map = mapInit;
+    });
+    return new MapProvider(map);
   }
 }
 
-
-export default new MapProvider(GoogleApi)
+export default MapProvider.connect(initMap);

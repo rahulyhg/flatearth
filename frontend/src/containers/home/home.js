@@ -40,16 +40,17 @@ class Home extends Component {
         <hr />
         <p>I have an a Idea how to find truth about Flat Earth</p>
         <p>
-          And luckily <strong>Agile Engine asked</strong> to make a project on my choice about something
-          interesting for me{' '}
-        <hr />
+          And luckily <strong>Agile Engine asked</strong> to make a project on my choice
+          about something interesting for me <hr />
         </p>
         <br />
         <strong>
           For demo only ;-)
           <p>Hope you enjoy my TEST-TASK SPA</p>
         </strong>
-        <ButtonNavigator callback={this.findUserPosition}>Find my position</ButtonNavigator>
+        <ButtonNavigator callback={this.findUserPosition}>
+          Find my position
+        </ButtonNavigator>
         latitude: {latitude}
         <hr />
         longitude: {longitude}

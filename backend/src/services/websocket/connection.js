@@ -3,8 +3,6 @@ import url from 'url';
 import userController from './controllers/last_users';
 import { safeSend } from './connection.service';
 
-
-
 const __DEV__ = process.env.__DEV__;
 
 const connectionMessage = wss => async (ws, req) => {
@@ -14,12 +12,13 @@ const connectionMessage = wss => async (ws, req) => {
     // You might use location.query.access_token to authenticate or share sessions
     // or req.headers.cookie (see http://stackoverflow.com/a/16395220/151312)
   }
-  const users = await userController.lastUsers({
-    count: 5
-  });
+  const users = await userController.lastUsers({ count: 5 });
   safeSend(ws, { type: 'ws_users_init', users });
   ws.on('message', message => {
     const data = JSON.parse(message);
+    console.log(data.payload.statusUpdate);
+    if (!data.payload.statusUpdate) return;
+
     if (__DEV__) {
       console.log('received: ', data);
     }

@@ -51,6 +51,10 @@ class Api {
     };
   }
 
+  sendCoordinates({ coordinates }: { token: string, coordinates: string }) {
+    return this.fetch(`${this.url}/profile/coordinates`, { coordinates });
+  }
+
   signin({ user, password }: { user: string, password: string }): Promise<LoggedInType> {
     return this.fetch(`${this.url}/auth/login`, { user, password });
   }
@@ -64,10 +68,6 @@ class Api {
       user,
       password
     });
-  }
-
-  uploads() {
-    return this.fetch(`${this.url}/auth/secret`, {});
   }
 
   setHeaders(headerName: string, headerValue: string): void {

@@ -6,18 +6,10 @@ const ObjectId = mongoose.Schema.Types.ObjectId;
 
 const UserSchema = new mongoose.Schema({
   name: { type: String, required: 'User name required', unique: true },
-  passwordHash: {
-    type: String
-  },
-  coordinates: {
-    type: String
-  },
-  distanceToMiddleEarth: {
-    type: String
-  },
-  country: {
-    type: String
-  },
+  passwordHash: { type: String },
+  coordinates: { type: String },
+  distanceToMiddleEarth: { type: String },
+  country: { type: String },
   email: {
     type: String,
     unique: true,

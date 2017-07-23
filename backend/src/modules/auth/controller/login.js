@@ -1,7 +1,6 @@
 // @flow
 
 import type { Context } from 'koa';
-// import type { TypeOf } from 'flow-io';
 
 import jwt from 'jsonwebtoken';
 import config from 'config';
@@ -29,8 +28,6 @@ ROUTE - /api/v1/auth/login
    - { status: 'error', message: 'some-error' }
 */
 
-// type LoginType = TypeOf<typeof LoginTypeImpl>;
-
 export default {
   async post(ctx: Context) {
     // anti-bruteforce pause
@@ -50,7 +47,7 @@ export default {
     const { user: name, password } = ctx.request.body;
     let user: ?any;
     try {
-      user = await User.findOne({ name }).exec();
+      user = await User.findOne({ name }, '_id name email passwordHash').exec();
       if (!user) {
         throw new Error();
       }
@@ -65,6 +62,7 @@ export default {
     // const jsonUser = user.toJSON();
     // ctx.statusCode = 201;
     // ctx.body =
+    console.log(user);
     ctx.api(201, {
       token: jwt.sign(user, config.secret, { expiresIn: '1d' }),
       user

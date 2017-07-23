@@ -2,6 +2,8 @@
 import React from 'react';
 import ButtonNavigatorStyled from './buttonNavigator.styled';
 
+import { connect } from 'react-redux';
+
 const findUserPosition = (callback: Function) => () => {
   navigator.geolocation.getCurrentPosition(({ coords: { latitude, longitude } }) => {
     callback({ latitude, longitude });
@@ -21,4 +23,10 @@ const ButtonNavigator = ({ callback }: { callback: Function }) =>
     Find my position
   </ButtonNavigatorStyled>;
 
-export default ButtonNavigator;
+const mapStateToProps = ({ locals: { userInfo } }) => {
+  return {
+    prop: userInfo
+  };
+};
+
+export default connect(mapStateToProps)(ButtonNavigator);

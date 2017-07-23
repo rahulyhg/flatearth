@@ -18,7 +18,10 @@ const wsMiddleware: Middleware<*, *> = ({ dispatch, getState }) => next => {
     console.log(websocket);
   }
   websocket.onopen = () => dispatch(wsConnected());
-  websocket.onclose = () => dispatch(wsDiconnected());
+  websocket.onclose = () => {
+    
+    dispatch(wsDiconnected())
+  };
   websocket.onerror = error => console.error('WS ERROR', error.data);
   websocket.onmessage = (event: MessageEvent) => {
     const action = JSON.parse(event.data);
@@ -37,10 +40,10 @@ const wsMiddleware: Middleware<*, *> = ({ dispatch, getState }) => next => {
       action.meta &&
       action.meta.websocket
     ) {
-      const user = getState().locals.user;
+      const { locals: { user, auth: { accessToken } } } = getState();
       const cleanAction = {
         ...action,
-        payload: { ...action.payload, ...user },
+        payload: { ...action.payload, ...user, accessToken },
         meta: undefined
       };
       websocket.send(JSON.stringify(cleanAction));
